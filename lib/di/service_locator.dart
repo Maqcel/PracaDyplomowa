@@ -20,14 +20,10 @@ class ServiceLocator {
   static void _init(BuildType currentBuild) {
     log(currentBuild.toString());
     _initAnalytics();
-    _initApi();
   }
 
   static void _initAnalytics() =>
       _getIt.registerSingleton<FirebaseAnalytics>(FirebaseAnalytics());
-
-  //TODO: Implement firestore
-  static void _initApi() {}
 
   static T get<T extends Object>() => _getIt.get<T>();
 }
