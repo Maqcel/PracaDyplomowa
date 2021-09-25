@@ -33,6 +33,14 @@ dependencies:
   #Utility
   equatable: ^2.0.3
 
+  #Integrations
+  cloud_firestore: ^2.5.3
+  firebase_auth: ^3.1.1
+  firebase_analytics: ^8.3.2
+  firebase_core: ^1.6.0
+  firebase_crashlytics: ^2.2.1
+  firebase_performance: ^0.7.1+1
+
 dependency_overrides:
   analyzer: 2.2.0 #Required by flutter_gen_runner
 
@@ -46,7 +54,7 @@ dev_dependencies:
   flutter_lints: ^1.0.4
 
   #Native splash
-  flutter_native_splash: ^1.2.3
+  flutter_native_splash: ^1.2.4
 
   #Tests
   flutter_test:
@@ -59,10 +67,9 @@ flutter:
   assets:
     - assets/images/
 
-#TODO create image for splash screen
 flutter_native_splash:
-  image: assets/images/splash_screen.jpg
-  color: "FFFFFF"
+  image: assets/images/splash_screen.png
+  color: "#ffffff"
 
 flutter_gen:
   output: lib/gen/

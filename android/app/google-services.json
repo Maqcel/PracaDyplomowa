@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "708851838875",
+    "project_id": "praca-inzynierska-9b1d5",
+    "storage_bucket": "praca-inzynierska-9b1d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:708851838875:android:14aecfba5d11e8dcabfb3e",
+        "android_client_info": {
+          "package_name": "com.example.praca_inz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "708851838875-smfojrs1qluchvivhrf4emlnliuhghmg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaJ8eXOtjOx8tbTTRak56vDx_XBkT2_uc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "708851838875-smfojrs1qluchvivhrf4emlnliuhghmg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

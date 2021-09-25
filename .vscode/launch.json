@@ -1,0 +1,40 @@
+{
+    "configurations": [
+        {
+            "name": "Debug-Development",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main/development.dart",
+            "console": "debugConsole",
+            "flutterMode": "debug",
+            "runTestsOnDevice": false
+        },
+        {
+            "name": "Debug-Production",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main/production.dart",
+            "console": "debugConsole",
+            "flutterMode": "debug",
+            "runTestsOnDevice": false
+        },
+        {
+            "name": "Release-Development",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main/development.dart",
+            "console": "debugConsole",
+            "flutterMode": "release",
+            "runTestsOnDevice": false
+        },
+        {
+            "name": "Release-Production",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main/production.dart",
+            "console": "debugConsole",
+            "flutterMode": "release",
+            "runTestsOnDevice": false
+        }
+    ]
+}

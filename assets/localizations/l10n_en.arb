@@ -1,4 +1,8 @@
 {
+    "appInitError": "App init failed!",
+    "@appInitError": {
+      "description": "Severe error on app startup!"
+    },
     "helloWorld": "Hello World!",
     "@helloWorld": {
       "description": "The conventional newborn programmer greeting"
