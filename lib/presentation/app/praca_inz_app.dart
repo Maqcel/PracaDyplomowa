@@ -13,7 +13,10 @@ import 'package:praca_inz/extensions/build_context_extension.dart';
 import 'package:praca_inz/presentation/app/navigation/user_session_router.dart';
 
 class PracaInzApp extends StatelessWidget {
-  const PracaInzApp({Key? key}) : super(key: key);
+  final bool _shouldShowDebug;
+  const PracaInzApp({Key? key, bool? shouldShowDebug})
+      : _shouldShowDebug = shouldShowDebug ?? true,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) => FutureBuilder(
@@ -31,6 +34,7 @@ class PracaInzApp extends StatelessWidget {
       );
 
   Widget _app() => MaterialApp(
+        debugShowCheckedModeBanner: _shouldShowDebug,
         supportedLocales: LocalizationConfig.supportedLocalizations,
         localizationsDelegates: LocalizationConfig.localizationDelegate,
         navigatorObservers: [
