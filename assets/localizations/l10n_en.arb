@@ -1,10 +1,42 @@
 {
-    "appInitError": "App init failed!",
-    "@appInitError": {
-      "description": "Severe error on app startup!"
+    "errorMessageUnexpected": "An unexpected error has occurred",
+    "@errorMessageUnexpected": {
+      "description": "Error message used as a fallback in case of error that doesn't have any description or identifier"
     },
-    "helloWorld": "Hello World!",
-    "@helloWorld": {
-      "description": "The conventional newborn programmer greeting"
+    "inputBoxDefaultHint": "Enter your answer...",
+    "@inputBoxDefaultHint": {
+      "description": "Text displayed as default hint on all input boxes"
+    },
+    "dialogUnexpectedErrorTitle": "Oops, something went wrong",
+    "@dialogUnexpectedErrorTitle": {
+      "description": "Title text displayed on Unexpected Error dialog"
+    },
+    "dialogUnexpectedErrorText": "Please, try again.",
+    "@dialogUnexpectedErrorText": {
+      "description": "Content text displayed in body of Unexpected Error dialog"
+    },
+    "dialogUnexpectedErrorButtonText": "OK",
+    "@dialogUnexpectedErrorButtonText": {
+      "description": "Text displayed on dismiss button on Unexpected Error dialog"
+    },
+    "authScreenButtonLoginText": "Login",
+    "@authScreenButtonLoginText": {
+      "description": "Text displayed on Login button"
+    },
+    "authScreenInputEmailLabel": "Email",
+    "@authScreenInputEmailLabel": {
+      "description": "Label above email input field"
+    },
+    "authScreenInputEmailHint": "Enter your email",
+    "@authScreenInputEmailHint": {
+      "description": "Hint displayed when email input field is empty"
+    },
+    "authScreenInputPasswordLabel": "Password",
+    "@authScreenInputPasswordLabel": {
+      "description": "Label above password input field"
+    },
+    "authScreenInputPasswordHint": "Enter your password",
+    "@authScreenInputPasswordHint": {
+      "description": "Hint displayed when password input field is empty"
     }
 }

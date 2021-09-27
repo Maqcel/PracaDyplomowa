@@ -10,9 +10,13 @@ class AppRoutes {
     name: '/splash',
     valueKey: ValueKey('splash'),
   );
-  static RouteDefinition auth = const RouteDefinition(
-    name: '/auth',
-    valueKey: ValueKey('auth'),
+  static RouteDefinition login = const RouteDefinition(
+    name: '/auth-login',
+    valueKey: ValueKey('auth-login'),
+  );
+  static RouteDefinition signup = const RouteDefinition(
+    name: '/auth-signup',
+    valueKey: ValueKey('auth-signup'),
   );
   static RouteDefinition home = const RouteDefinition(
     name: '/home',

@@ -1,0 +1,4 @@
+enum ButtonDirection {
+  left,
+  right,
+}
