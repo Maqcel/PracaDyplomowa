@@ -9,7 +9,6 @@ import 'package:praca_inz/config/localization/localization_config.dart';
 import 'package:praca_inz/di/app_bloc_providers.dart';
 import 'package:praca_inz/di/app_repository_providers.dart';
 import 'package:praca_inz/di/service_locator.dart';
-import 'package:praca_inz/extensions/build_context_extension.dart';
 import 'package:praca_inz/presentation/app/navigation/user_session_router.dart';
 
 class PracaInzApp extends StatelessWidget {
@@ -24,7 +23,7 @@ class PracaInzApp extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             log(
-              context.localizations.appInitError,
+              'App init failed!',
               error: snapshot.error,
               stackTrace: snapshot.stackTrace,
             );
