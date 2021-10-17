@@ -5,7 +5,7 @@ Repozytorium zawiera kod mojej pracy inżynierskiej, wraz z dołączonym tekstem
 
 ## Metryka pracy dyplomowej
  
-- Tytuł: `Programowanie aplikacji wieloplatformowych przy wykorzystaniu Google Flutter na przykładzie aplikacji quizowej`,
+- Tytuł: `Aplikacja mobilna wspomagająca naukę resuscytacji krążeniowo oddechowej przy wykorzystaniu Google Flutter`,
 - Kierunek: `Informatyka`,
 - Nazwisko i Imię: `Marcel Kozień`,
 - Numer albumu: `222480`,
