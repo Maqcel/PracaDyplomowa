@@ -32,6 +32,8 @@ dependencies:
 
   #Utility
   equatable: ^2.0.3
+  dartz: ^0.10.0
+  email_validator: ^2.0.1
 
   #Integrations
   cloud_firestore: ^2.5.3

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:praca_inz/presentation/app/navigation/cubit/user_session_navigation_cubit.dart';
 import 'package:praca_inz/presentation/common/navigation/cubit_router.dart';
 import 'package:praca_inz/presentation/page_transitions/slide_transition_page.dart';
+import 'package:praca_inz/presentation/screens/auth/auth_screen.dart';
 import 'package:praca_inz/presentation/screens/splash/splash_screen.dart';
 import 'package:praca_inz/routing/app_routes.dart';
 
@@ -40,9 +41,9 @@ class UserSessionRouter extends CubitRouter<UserSessionNavigationCubit,
     if (state is UserSessionNavigationLoggedOut) {
       pageStack.add(
         SlideTransitionPage<void>(
-          name: AppRoutes.auth.name,
-          key: AppRoutes.auth.valueKey,
-          child: const Scaffold(backgroundColor: Colors.red),
+          name: AppRoutes.login.name,
+          key: AppRoutes.login.valueKey,
+          child: const AuthScreen(),
         ),
       );
     }

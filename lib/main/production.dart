@@ -4,5 +4,5 @@ import 'package:praca_inz/presentation/app/praca_inz_app.dart';
 
 void main() {
   ServiceLocator.initProduction();
-  runApp(const PracaInzApp());
+  runApp(const PracaInzApp(shouldShowDebug: false));
 }
