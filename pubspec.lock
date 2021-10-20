@@ -7,14 +7,14 @@ packages:
       name: _fe_analyzer_shared
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "25.0.0"
+    version: "29.0.0"
   analyzer:
     dependency: "direct overridden"
     description:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.0"
+    version: "2.6.0"
   archive:
     dependency: transitive
     description:
@@ -84,14 +84,14 @@ packages:
       name: build_runner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.2"
+    version: "2.1.4"
   build_runner_core:
     dependency: transitive
     description:
       name: build_runner_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.1.0"
+    version: "7.2.2"
   built_collection:
     dependency: transitive
     description:
@@ -191,7 +191,7 @@ packages:
     source: hosted
     version: "4.1.0"
   collection:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: collection
       url: "https://pub.dartlang.org"
@@ -308,28 +308,28 @@ packages:
       name: firebase_auth
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.1"
+    version: "3.1.3"
   firebase_auth_platform_interface:
     dependency: transitive
     description:
       name: firebase_auth_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.1.0"
+    version: "6.1.1"
   firebase_auth_web:
     dependency: transitive
     description:
       name: firebase_auth_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.0"
+    version: "3.1.2"
   firebase_core:
     dependency: "direct main"
     description:
       name: firebase_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.6.0"
+    version: "1.7.0"
   firebase_core_platform_interface:
     dependency: transitive
     description:
@@ -350,14 +350,14 @@ packages:
       name: firebase_crashlytics
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.1"
+    version: "2.2.3"
   firebase_crashlytics_platform_interface:
     dependency: transitive
     description:
       name: firebase_crashlytics_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.2"
+    version: "3.1.3"
   firebase_performance:
     dependency: "direct main"
     description:
@@ -397,7 +397,7 @@ packages:
       name: flutter_bloc
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.3.0"
+    version: "7.3.1"
   flutter_blurhash:
     dependency: transitive
     description:
@@ -418,14 +418,14 @@ packages:
       name: flutter_gen_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.2"
+    version: "4.0.0"
   flutter_gen_runner:
     dependency: "direct dev"
     description:
       name: flutter_gen_runner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.2"
+    version: "4.0.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -451,7 +451,7 @@ packages:
       name: flutter_svg
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.22.0"
+    version: "0.23.0+1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -552,14 +552,14 @@ packages:
       name: json_annotation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.1.0"
+    version: "4.3.0"
   json_serializable:
     dependency: "direct dev"
     description:
       name: json_serializable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.0.2"
+    version: "6.0.0"
   lints:
     dependency: transitive
     description:
@@ -742,6 +742,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.27.2"
+  sensors_plus:
+    dependency: "direct main"
+    description:
+      name: sensors_plus
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.1"
+  sensors_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: sensors_plus_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
+  sensors_plus_web:
+    dependency: transitive
+    description:
+      name: sensors_plus_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
   shelf:
     dependency: transitive
     description:
