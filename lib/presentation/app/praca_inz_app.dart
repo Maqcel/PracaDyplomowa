@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:praca_inz/config/app_init.dart';
 import 'package:praca_inz/config/localization/localization_config.dart';
+import 'package:praca_inz/config/theme/default_theme.dart';
 import 'package:praca_inz/di/app_bloc_providers.dart';
 import 'package:praca_inz/di/app_repository_providers.dart';
 import 'package:praca_inz/di/service_locator.dart';
@@ -36,6 +37,7 @@ class PracaInzApp extends StatelessWidget {
         debugShowCheckedModeBanner: _shouldShowDebug,
         supportedLocales: LocalizationConfig.supportedLocalizations,
         localizationsDelegates: LocalizationConfig.localizationDelegate,
+        theme: DefaultTheme().themeData,
         navigatorObservers: [
           FirebaseAnalyticsObserver(
             analytics: ServiceLocator.get<FirebaseAnalytics>(),

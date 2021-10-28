@@ -11,57 +11,56 @@ class DefaultTheme extends ThemeDefinition {
   static final TextStylesDefinition textStyles = DefaultTextStyles();
 
   @override
-  Brightness brightness = Brightness.dark;
+  Brightness brightness = Brightness.light;
 
   @override
   ColorScheme get colorScheme => ColorScheme(
         primary: ColorPalette.colorPrimary1000,
-        primaryVariant: ColorPalette.colorPrimary900,
-        secondary: ColorPalette.colorSecondary1000,
-        secondaryVariant: ColorPalette.colorSecondary900,
-        surface: ColorPalette.colorBasic1000,
-        background: ColorPalette.colorBasic900,
+        primaryVariant: ColorPalette.colorPrimary1000,
+        secondary: ColorPalette.colorSecondary800,
+        secondaryVariant: ColorPalette.colorSecondary800,
+        surface: ColorPalette.colorBasic0,
+        background: ColorPalette.colorBasic0,
         error: ColorPalette.colorError,
         onPrimary: ColorPalette.colorBasic0,
         onSecondary: ColorPalette.colorBasic0,
-        onSurface: ColorPalette.colorBasic0,
-        onBackground: ColorPalette.colorBasic0,
+        onSurface: ColorPalette.colorBasic900,
+        onBackground: ColorPalette.colorBasic900,
         onError: ColorPalette.colorBasic0,
         brightness: brightness,
       );
 
   @override
-  Color scaffoldBackgroundColor = ColorPalette.colorBasic900;
+  Color scaffoldBackgroundColor = ColorPalette.colorBasic0;
 
   @override
-  Color disabledColor = ColorPalette.colorBasic800;
+  Color disabledColor = ColorPalette.colorBasic300;
 
   @override
-  Color textHintColor = ColorPalette.colorBasic100;
+  Color textHintColor = ColorPalette.colorBasic700;
 
   @override
   TextTheme text = textStyles.textTheme;
 
   @override
   AppBarTheme appBar = AppBarTheme(
-    color: ColorPalette.colorBasic900,
+    color: ColorPalette.colorBasic0,
     centerTitle: true,
     elevation: 0,
     titleTextStyle: textStyles.textNavigationBar,
-    systemOverlayStyle: SystemUiOverlayStyle.light,
   );
 
   @override
   BottomNavigationBarThemeData bottomNavigationBar =
       BottomNavigationBarThemeData(
-    backgroundColor: ColorPalette.colorBasic900,
+    backgroundColor: ColorPalette.colorBasic0,
     selectedLabelStyle: textStyles.textHeadline6.copyWith(
       color: ColorPalette.colorPrimary1000,
       fontSize: 12,
     ),
-    unselectedLabelStyle: textStyles.textHeadline6,
     selectedItemColor: ColorPalette.colorPrimary1000,
-    unselectedItemColor: ColorPalette.colorBasic100,
+    unselectedLabelStyle: textStyles.textHeadline6,
+    unselectedItemColor: ColorPalette.colorBasic900,
     showUnselectedLabels: true,
   );
 
@@ -76,24 +75,24 @@ class DefaultTheme extends ThemeDefinition {
     indicatorSize: TabBarIndicatorSize.tab,
     labelColor: ColorPalette.colorPrimary1000,
     labelStyle: textStyles.textTabBar,
-    unselectedLabelColor: ColorPalette.colorBasic100,
+    unselectedLabelColor: ColorPalette.colorBasic1000,
     unselectedLabelStyle: textStyles.textTabBar,
   );
 
   @override
   TextButtonThemeData textButtonTheme = TextButtonThemeData(
     style: ButtonStyle(
-        foregroundColor:
-            MaterialStateProperty.all(ColorPalette.colorPrimary1000),
-        overlayColor: MaterialStateProperty.all(Colors.transparent),
-        textStyle: MaterialStateProperty.all(textStyles.textTextButton),
-        elevation: MaterialStateProperty.all(0)),
+      foregroundColor: MaterialStateProperty.all(ColorPalette.colorPrimary1000),
+      overlayColor: MaterialStateProperty.all(Colors.transparent),
+      textStyle: MaterialStateProperty.all(textStyles.textTextButton),
+      elevation: MaterialStateProperty.all(0),
+    ),
   );
 
   @override
   TextSelectionThemeData textSelectionTheme = const TextSelectionThemeData(
     cursorColor: ColorPalette.colorPrimary1000,
-    selectionColor: ColorPalette.colorSecondary900,
+    selectionColor: ColorPalette.colorSecondary800,
     selectionHandleColor: ColorPalette.colorPrimary1000,
   );
 
@@ -102,6 +101,6 @@ class DefaultTheme extends ThemeDefinition {
         contentTextStyle: textStyles.textLabel1.copyWith(
           color: ColorPalette.colorBasic0,
         ),
-        backgroundColor: ColorPalette.colorBasic1000,
+        backgroundColor: ColorPalette.colorBasic900,
       );
 }

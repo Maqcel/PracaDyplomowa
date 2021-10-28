@@ -1,23 +1,22 @@
 import 'dart:ui';
 
 class ColorPalette {
-  static const Color colorPrimary1000 = Color(0xFF0F143A);
-  static const Color colorPrimary900 = Color(0xFF271963);
-  static const Color colorPrimary800 = Color(0xFF31256A);
-  static const Color colorSecondary1000 = Color(0xFF3889EC);
-  static const Color colorSecondary900 = Color(0xFF3A98F2);
-  static const Color colorTertiary1000 = Color(0xFFBC02BD);
-  static const Color colorTertiary900 = Color(0xFFD327C4);
-  static const Color colorTertiary800 = Color(0xFFFD713A);
-  static const Color colorTertiary700 = Color(0xFFFE974C);
-  static const Color colorTertiary600 = Color(0xFF3D83E8);
-  static const Color colorTertiary500 = Color(0xFF559CF0);
-  static const Color colorTertiary300 = Color(0xFF38AEE1);
-  static const Color colorTertiary400 = Color(0xFF55B5EC);
+  static const Color colorPrimary1000 = Color(0xFF0077b6);
+  static const Color colorPrimary900 = Color(0xFF1a85bd);
+  static const Color colorPrimary800 = Color(0xFF3392c5);
+  static const Color colorSecondary1000 = Color(0xFF00b4d8);
+  static const Color colorSecondary900 = Color(0xFF1abcdc);
+  static const Color colorSecondary800 = Color(0xFF33c3e0);
+  static const Color colorTertiary1000 = Color(0xFF90e0ef);
+  static const Color colorTertiary900 = Color(0xFF9be3f1);
+  static const Color colorTertiary800 = Color(0xFFa6e6f2);
   static const Color colorBasic1000 = Color(0xFF000000);
-  static const Color colorBasic900 = Color(0xFF333333);
-  static const Color colorBasic800 = Color(0xFF626366);
-  static const Color colorBasic100 = Color(0xFFF2F2F2);
+  static const Color colorBasic900 = Color(0xFF141819);
+  static const Color colorBasic800 = Color(0xFF283032);
+  static const Color colorBasic700 = Color(0xFF3d484a);
+  static const Color colorBasic300 = Color(0xFFe5f8fc);
+  static const Color colorBasic200 = Color(0xFFf4fcfe);
+  static const Color colorBasic100 = Color(0xFFfafefe);
   static const Color colorBasic0 = Color(0xFFFFFFFF);
   static const Color colorError = Color(0xFFFF470D);
 }

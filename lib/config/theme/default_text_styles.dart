@@ -6,7 +6,7 @@ import 'package:praca_inz/config/theme/text_styles_definition.dart';
 class DefaultTextStyles extends TextStylesDefinition {
   @override
   TextStyle textTabBar = TextStyle(
-    color: ColorPalette.colorBasic0,
+    color: ColorPalette.colorBasic900,
     fontFamily: GoogleFonts.poppins().fontFamily,
     fontWeight: FontWeight.w600,
     fontStyle: FontStyle.normal,
@@ -16,7 +16,7 @@ class DefaultTextStyles extends TextStylesDefinition {
 
   @override
   TextStyle textNavigationBar = TextStyle(
-    color: ColorPalette.colorBasic0,
+    color: ColorPalette.colorBasic900,
     fontFamily: GoogleFonts.poppins().fontFamily,
     fontWeight: FontWeight.w600,
     fontStyle: FontStyle.normal,
@@ -26,7 +26,7 @@ class DefaultTextStyles extends TextStylesDefinition {
 
   @override
   TextStyle textHeadline1 = TextStyle(
-    color: ColorPalette.colorBasic0,
+    color: ColorPalette.colorBasic900,
     fontFamily: GoogleFonts.poppins().fontFamily,
     fontWeight: FontWeight.w600,
     fontStyle: FontStyle.normal,
@@ -36,7 +36,7 @@ class DefaultTextStyles extends TextStylesDefinition {
 
   @override
   TextStyle textHeadline2 = TextStyle(
-    color: ColorPalette.colorBasic0,
+    color: ColorPalette.colorBasic900,
     fontFamily: GoogleFonts.poppins().fontFamily,
     fontWeight: FontWeight.w600,
     fontStyle: FontStyle.normal,
@@ -46,7 +46,7 @@ class DefaultTextStyles extends TextStylesDefinition {
 
   @override
   TextStyle textHeadline3 = TextStyle(
-    color: ColorPalette.colorBasic0,
+    color: ColorPalette.colorBasic900,
     fontFamily: GoogleFonts.poppins().fontFamily,
     fontWeight: FontWeight.w600,
     fontStyle: FontStyle.normal,
@@ -56,7 +56,7 @@ class DefaultTextStyles extends TextStylesDefinition {
 
   @override
   TextStyle textHeadline4 = TextStyle(
-    color: ColorPalette.colorBasic0,
+    color: ColorPalette.colorBasic900,
     fontFamily: GoogleFonts.dmSans().fontFamily,
     fontWeight: FontWeight.w700,
     fontStyle: FontStyle.normal,
@@ -66,7 +66,7 @@ class DefaultTextStyles extends TextStylesDefinition {
 
   @override
   TextStyle textHeadline5 = TextStyle(
-    color: ColorPalette.colorBasic0,
+    color: ColorPalette.colorBasic900,
     fontFamily: GoogleFonts.dmSans().fontFamily,
     fontWeight: FontWeight.w700,
     fontStyle: FontStyle.normal,
@@ -76,7 +76,7 @@ class DefaultTextStyles extends TextStylesDefinition {
 
   @override
   TextStyle textHeadline6 = TextStyle(
-    color: ColorPalette.colorBasic0,
+    color: ColorPalette.colorBasic900,
     fontFamily: GoogleFonts.dmSans().fontFamily,
     fontWeight: FontWeight.w500,
     fontStyle: FontStyle.normal,
@@ -94,9 +94,10 @@ class DefaultTextStyles extends TextStylesDefinition {
     height: 24 / 15,
   );
 
+  // I swear this naming convention is right
   @override
   TextStyle textTextButton = TextStyle(
-    color: ColorPalette.colorBasic0,
+    color: ColorPalette.colorPrimary1000,
     fontFamily: GoogleFonts.poppins().fontFamily,
     fontWeight: FontWeight.w600,
     fontStyle: FontStyle.normal,
@@ -106,7 +107,7 @@ class DefaultTextStyles extends TextStylesDefinition {
 
   @override
   TextStyle textLabel1 = TextStyle(
-    color: ColorPalette.colorBasic0,
+    color: ColorPalette.colorBasic900,
     fontFamily: GoogleFonts.dmSans().fontFamily,
     fontWeight: FontWeight.w500,
     fontStyle: FontStyle.normal,
@@ -116,7 +117,7 @@ class DefaultTextStyles extends TextStylesDefinition {
 
   @override
   TextStyle textLabel2 = TextStyle(
-    color: ColorPalette.colorBasic0,
+    color: ColorPalette.colorBasic900,
     fontFamily: GoogleFonts.dmSans().fontFamily,
     fontWeight: FontWeight.w500,
     fontStyle: FontStyle.normal,
@@ -126,7 +127,7 @@ class DefaultTextStyles extends TextStylesDefinition {
 
   @override
   TextStyle textFormInput = TextStyle(
-    color: ColorPalette.colorBasic0,
+    color: ColorPalette.colorBasic900,
     fontFamily: GoogleFonts.dmSans().fontFamily,
     fontWeight: FontWeight.w400,
     fontStyle: FontStyle.normal,
@@ -136,7 +137,7 @@ class DefaultTextStyles extends TextStylesDefinition {
 
   @override
   TextStyle textParagraph2 = TextStyle(
-    color: ColorPalette.colorBasic0,
+    color: ColorPalette.colorBasic900,
     fontFamily: GoogleFonts.dmSans().fontFamily,
     fontWeight: FontWeight.w400,
     fontStyle: FontStyle.normal,
@@ -146,7 +147,7 @@ class DefaultTextStyles extends TextStylesDefinition {
 
   @override
   TextStyle textParagraph3 = TextStyle(
-    color: ColorPalette.colorBasic0,
+    color: ColorPalette.colorBasic700,
     fontFamily: GoogleFonts.dmSans().fontFamily,
     fontWeight: FontWeight.w400,
     fontStyle: FontStyle.normal,
