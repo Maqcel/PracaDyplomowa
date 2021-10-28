@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:praca_inz/config/dimensions/animation_dimention.dart';
+import 'package:praca_inz/config/dimensions/animation_dimension.dart';
 import 'package:praca_inz/config/dimensions/padding_dimension.dart';
 import 'package:praca_inz/config/dimensions/radius_dimension.dart';
 import 'package:praca_inz/config/theme/color_palette.dart';
 import 'package:praca_inz/domain/failures/authorization_failure.dart';
 import 'package:praca_inz/extensions/build_context_extension.dart';
-import 'package:praca_inz/gen/assets.gen.dart';
 import 'package:praca_inz/presentation/app/navigation/cubit/user_session_navigation_cubit.dart';
 import 'package:praca_inz/presentation/common/common_failure_handler.dart';
 import 'package:praca_inz/presentation/screens/auth/login/cubit/login_screen_cubit.dart';
@@ -50,39 +49,28 @@ class _LoginScreenState extends State<LoginScreen> with CommonFailureHandler {
             shader: ColorPalette.colorPrimary1000,
             foreground: ColorPalette.colorPrimary800,
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _logoContainer(),
-              _loginFormContainer(state),
-            ],
+          Padding(
+            padding: const EdgeInsets.all(PaddingDimension.medium),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _loginFormContainer(state),
+              ],
+            ),
           ),
         ]),
       );
 
-  Widget _logoContainer() => ClipRRect(
-        borderRadius: BorderRadius.all(
-          Radius.circular(
-            MediaQuery.of(context).size.width / 2,
-          ),
-        ),
-        child: Container(
-          constraints: BoxConstraints(
-            maxWidth: MediaQuery.of(context).size.width / 2,
-            maxHeight: MediaQuery.of(context).size.width / 2,
-          ),
-          child: Image(
-            image: Assets.images.logo,
-          ),
-        ),
-      );
-
   Widget _loginFormContainer(LoginScreenState state) => Container(
-        padding: const EdgeInsets.all(PaddingDimension.mediumLarge),
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(RadiusDimension.circularMedium),
+          color: context.theme.backgroundColor,
+        ),
+        padding: const EdgeInsets.all(PaddingDimension.medium),
         child: Column(
           children: [
             _errorContainer(state),
-            _emailLabelRow(),
+            _labelRow(context.localizations.authScreenInputEmailLabel),
             const SizedBox(
               height: PaddingDimension.small,
               width: double.infinity,
@@ -97,6 +85,11 @@ class _LoginScreenState extends State<LoginScreen> with CommonFailureHandler {
             ),
             const SizedBox(
               height: PaddingDimension.medium,
+              width: double.infinity,
+            ),
+            _labelRow(context.localizations.authScreenInputPasswordLabel),
+            const SizedBox(
+              height: PaddingDimension.small,
               width: double.infinity,
             ),
             ClipRRect(
@@ -135,10 +128,10 @@ class _LoginScreenState extends State<LoginScreen> with CommonFailureHandler {
         ],
       );
 
-  Widget _emailLabelRow() => Row(
+  Widget _labelRow(String text) => Row(
         children: [
           Text(
-            context.localizations.authScreenInputEmailLabel,
+            text,
             style: context.theme.textTheme.subtitle1,
           )
         ],
