@@ -22,4 +22,16 @@ class AppRoutes {
     name: '/home',
     valueKey: ValueKey('home'),
   );
+  static RouteDefinition homeCprSession = const RouteDefinition(
+    name: '/home/cpr-session',
+    valueKey: ValueKey('cpr-session'),
+  );
+  static RouteDefinition homeProfile = const RouteDefinition(
+    name: '/home/profile',
+    valueKey: ValueKey('profile'),
+  );
+  static RouteDefinition homeDevelopment = const RouteDefinition(
+    name: '/home/development',
+    valueKey: ValueKey('development'),
+  );
 }

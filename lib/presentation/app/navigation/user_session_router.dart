@@ -3,6 +3,7 @@ import 'package:praca_inz/presentation/app/navigation/cubit/user_session_navigat
 import 'package:praca_inz/presentation/common/navigation/cubit_router.dart';
 import 'package:praca_inz/presentation/page_transitions/slide_transition_page.dart';
 import 'package:praca_inz/presentation/screens/auth/auth_screen.dart';
+import 'package:praca_inz/presentation/screens/main/main_screen.dart';
 import 'package:praca_inz/presentation/screens/splash/splash_screen.dart';
 import 'package:praca_inz/routing/app_routes.dart';
 
@@ -33,7 +34,7 @@ class UserSessionRouter extends CubitRouter<UserSessionNavigationCubit,
         SlideTransitionPage<void>(
           name: AppRoutes.home.name,
           key: AppRoutes.home.valueKey,
-          child: const Scaffold(backgroundColor: Colors.blue),
+          child: const MainScreen(),
         ),
       );
     }
