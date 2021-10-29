@@ -38,5 +38,13 @@
     "authScreenInputPasswordHint": "Enter your password",
     "@authScreenInputPasswordHint": {
       "description": "Hint displayed when password input field is empty"
+    },
+    "mainBottomNavCprSessionLabel": "CPR",
+    "@mainBottomNavCprSessionLabel": {
+      "description": "Cpr session element on Main Screen bottom navigation"
+    },
+    "mainBottomNavProfileLabel": "Profile",
+    "@mainBottomNavProfileLabel": {
+      "description": "Profile element on Main Screen bottom navigation"
     }
 }
