@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:praca_inz/domain/repositories/sensors_repository.dart';
 import 'package:praca_inz/extensions/build_context_extension.dart';
+import 'package:praca_inz/presentation/screens/home/cpr/cubit/cpr_screen_cubit.dart';
 import 'package:praca_inz/presentation/screens/main/navigation/main_router.dart';
 
 class MainScreen extends StatefulWidget {
@@ -26,8 +29,16 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => Router(
-        routerDelegate: _routerDelegate,
-        backButtonDispatcher: _backButtonDispatcher,
+  Widget build(BuildContext context) => MultiBlocProvider(
+        providers: [
+          BlocProvider<CprScreenCubit>(
+            create: (context) => CprScreenCubit(
+                sensorsRepository: context.read<SensorsRepository>()),
+          ),
+        ],
+        child: Router(
+          routerDelegate: _routerDelegate,
+          backButtonDispatcher: _backButtonDispatcher,
+        ),
       );
 }

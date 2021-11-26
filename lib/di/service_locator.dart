@@ -2,6 +2,9 @@ import 'dart:developer';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:get_it/get_it.dart';
+import 'package:praca_inz/communication/sensors/accelerometer_sensor.dart';
+import 'package:praca_inz/communication/sensors/gyroscope_sensor.dart';
+import 'package:praca_inz/communication/sensors/sensors_services.dart';
 import 'package:praca_inz/config/build_environment.dart';
 
 class ServiceLocator {
@@ -20,10 +23,18 @@ class ServiceLocator {
   static void _init(BuildType currentBuild) {
     log(currentBuild.toString());
     _initAnalytics();
+    _initSensors();
   }
 
   static void _initAnalytics() =>
       _getIt.registerSingleton<FirebaseAnalytics>(FirebaseAnalytics());
+
+  static void _initSensors() {
+    _getIt.registerLazySingleton<AccelerometerSensorService>(
+        () => AccelerometerSensor());
+    _getIt
+        .registerLazySingleton<GyroscopeSensorService>(() => GyroscopeSensor());
+  }
 
   static T get<T extends Object>() => _getIt.get<T>();
 }

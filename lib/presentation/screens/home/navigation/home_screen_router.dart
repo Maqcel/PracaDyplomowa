@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:praca_inz/presentation/common/navigation/cubit_router.dart';
 import 'package:praca_inz/presentation/page_transitions/fade_transition_page.dart';
+import 'package:praca_inz/presentation/screens/home/cpr/cpr_screen.dart';
 import 'package:praca_inz/presentation/screens/home/navigation/cubit/home_navigation_cubit.dart';
 import 'package:praca_inz/routing/app_routes.dart';
 
@@ -17,9 +18,7 @@ class HomeScreenRouter
     if (state is HomeCprSession) {
       pageStack.add(FadeTransitionPage.fromRoute(
         route: AppRoutes.homeCprSession,
-        child: const Scaffold(
-          body: Center(child: Text('CPR')),
-        ),
+        child: const CprScreen(),
       ));
     }
 
