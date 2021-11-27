@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:praca_inz/presentation/screens/home/cpr/cubit/cpr_screen_cubit.dart';
@@ -20,6 +22,7 @@ class _CprScreenState extends State<CprScreen> {
     super.initState();
     context.read<CprScreenCubit>().onScreenOpened();
     _disposeCallback = context.read<CprScreenCubit>().onScreenClosed;
+    Timer(const Duration(seconds: 10), () => _disposeCallback());
   }
 
   @override
@@ -38,8 +41,13 @@ class _CprScreenState extends State<CprScreen> {
   bool _buildWhen(CprScreenState previous, CprScreenState current) =>
       (current is CprLoading);
 
-  Widget _body(CprScreenState state) => const Scaffold(
-        body: Center(child: Text('CPR')),
+  Widget _body(CprScreenState state) => Scaffold(
+        body: Center(
+          child: TextButton(
+            onPressed: () => _disposeCallback(),
+            child: const Text('STOP/START'),
+          ),
+        ),
       );
 
   // TODO: Implement actions on change in local state
