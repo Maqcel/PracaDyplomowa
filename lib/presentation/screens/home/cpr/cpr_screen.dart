@@ -22,7 +22,12 @@ class _CprScreenState extends State<CprScreen> {
     super.initState();
     context.read<CprScreenCubit>().onScreenOpened();
     _disposeCallback = context.read<CprScreenCubit>().onScreenClosed;
-    Timer(const Duration(seconds: 10), () => _disposeCallback());
+
+    /// Testing period
+    Timer(
+      const Duration(minutes: 1),
+      () => context.read<CprScreenCubit>().onCprSessionEnd(),
+    );
   }
 
   @override
@@ -39,13 +44,13 @@ class _CprScreenState extends State<CprScreen> {
   void _onMainNavigationStateChanged(MainNavigationState state) {}
 
   bool _buildWhen(CprScreenState previous, CprScreenState current) =>
-      (current is CprLoading);
+      (current is CprInitial);
 
   Widget _body(CprScreenState state) => Scaffold(
         body: Center(
-          child: TextButton(
-            onPressed: () => _disposeCallback(),
-            child: const Text('STOP/START'),
+          child: ElevatedButton(
+            onPressed: () => context.read<CprScreenCubit>().printRaw(),
+            child: const Text('PRINT RAW DATA'),
           ),
         ),
       );

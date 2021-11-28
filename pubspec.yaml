@@ -35,6 +35,7 @@ dependencies:
   equatable: 2.0.3
   dartz: 0.10.0
   email_validator: 2.0.1
+  moving_average: 0.3.0
 
   #Sensors
   sensors_plus: 1.2.1
