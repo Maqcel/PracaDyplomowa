@@ -15,9 +15,6 @@ class HomeNavigationCubit extends NavigationCubit<HomeNavigationState> {
       case HomeScreenPageType.profile:
         emit(HomeProfile());
         break;
-      case HomeScreenPageType.development:
-        emit(HomeDevelopment());
-        break;
     }
   }
 }

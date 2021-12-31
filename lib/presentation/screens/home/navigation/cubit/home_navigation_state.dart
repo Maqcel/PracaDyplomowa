@@ -10,5 +10,3 @@ abstract class HomeNavigationState extends Equatable {
 class HomeCprSession extends HomeNavigationState {}
 
 class HomeProfile extends HomeNavigationState {}
-
-class HomeDevelopment extends HomeNavigationState {}

@@ -30,8 +30,8 @@ class AppRoutes {
     name: '/home/profile',
     valueKey: ValueKey('profile'),
   );
-  static RouteDefinition homeDevelopment = const RouteDefinition(
-    name: '/home/development',
-    valueKey: ValueKey('development'),
+  static RouteDefinition profileSession = const RouteDefinition(
+    name: '/profile/session',
+    valueKey: ValueKey('session'),
   );
 }

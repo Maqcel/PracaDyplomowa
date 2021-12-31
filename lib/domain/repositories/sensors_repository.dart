@@ -101,6 +101,7 @@ class SensorsRepository {
         _calculateTemporaryCompressionRate(refractionPicks);
 
     return SessionResult(
+      sessionDate: DateTime.now(),
       numberOfChestCompressions: refractions.length,
       averageCompressionsRate: averageCompressionsRate,
       temporaryCompressionRate: temporaryCompressionsRate,

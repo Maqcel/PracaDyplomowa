@@ -31,15 +31,6 @@ class HomeScreenRouter
       ));
     }
 
-    if (state is HomeDevelopment) {
-      pageStack.add(FadeTransitionPage.fromRoute(
-        route: AppRoutes.homeDevelopment,
-        child: const Scaffold(
-          body: Center(child: Text('Development')),
-        ),
-      ));
-    }
-
     return pageStack;
   }
 
