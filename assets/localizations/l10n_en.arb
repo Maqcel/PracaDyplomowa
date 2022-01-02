@@ -46,5 +46,21 @@
     "mainBottomNavProfileLabel": "Profile",
     "@mainBottomNavProfileLabel": {
       "description": "Profile element on Main Screen bottom navigation"
+    },
+    "dialogConfirmationLogoutTitle": "Logging Out",
+    "@dialogConfirmationLogoutTitle": {
+      "description": "Title text displayed on Confirmation dialog when logging out"
+    },
+    "dialogConfirmationLogoutText": "Are you sure you want to log out?",
+    "@dialogConfirmationLogoutText": {
+      "description": "Content text displayed in body of Confirmation dialog when logging out"
+    },
+    "dialogConfirmationLogoutDismissButtonText": "Cancel",
+    "@dialogConfirmationLogoutDismissButtonText": {
+      "description": "Text displayed on dismiss button on Confirmation dialog when logging out"
+    },
+    "dialogConfirmationLogoutConfirmButtonText": "Log Out",
+    "@dialogConfirmationLogoutConfirmButtonText": {
+      "description": "Text displayed on confirm button on Confirmation dialog when logging out"
     }
 }

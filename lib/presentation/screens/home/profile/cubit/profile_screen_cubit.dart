@@ -15,7 +15,12 @@ class ProfileScreenCubit extends Cubit<ProfileScreenState> {
   void onScreenOpened() => {
         emit(const ProfileLoaded(
           userProfile: UserProfile(
-              completedSessions: [], firstName: '', groupId: '', lastName: ''),
+            uid: '',
+            completedSessions: [],
+            firstName: '',
+            groupId: '',
+            lastName: '',
+          ),
         ))
       };
 
