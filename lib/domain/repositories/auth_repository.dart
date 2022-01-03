@@ -4,5 +4,6 @@ class AuthRepository {
   bool hasValidUserSession() =>
       FirebaseAuth.instance.currentUser == null ? false : true;
 
-  void clearLocalUserSession() => FirebaseAuth.instance.signOut();
+  Future<void> clearLocalUserSession() async =>
+      await FirebaseAuth.instance.signOut();
 }

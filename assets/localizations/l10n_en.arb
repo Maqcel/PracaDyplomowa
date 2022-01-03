@@ -23,6 +23,18 @@
     "@authScreenButtonLoginText": {
       "description": "Text displayed on Login button"
     },
+    "authScreenButtonSignupText": "Signup",
+    "@authScreenButtonSignuoText": {
+      "description": "Text displayed on Signup button"
+    },
+    "signinScreenChangeButton": "Signup instead",
+    "@signinScreenChangeButton": {
+      "description": "Change to signup screen"
+    },
+    "signupScreenChangeButton": "Login instead",
+    "@signupScreenChangeButton": {
+      "description": "Change to login screen"
+    },
     "authScreenInputEmailLabel": "Email",
     "@authScreenInputEmailLabel": {
       "description": "Label above email input field"
@@ -62,5 +74,9 @@
     "dialogConfirmationLogoutConfirmButtonText": "Log Out",
     "@dialogConfirmationLogoutConfirmButtonText": {
       "description": "Text displayed on confirm button on Confirmation dialog when logging out"
+    },
+    "profileLogoutButtonText": "Logout",
+    "@profileLogoutButtonText": {
+      "description": "Text of the logout button in profile"
     }
 }

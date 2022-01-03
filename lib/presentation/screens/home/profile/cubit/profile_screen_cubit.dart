@@ -24,8 +24,8 @@ class ProfileScreenCubit extends Cubit<ProfileScreenState> {
         ))
       };
 
-  void onLogoutClicked() {
-    _authRepository.clearLocalUserSession();
+  Future<void> onLogoutClicked() async {
+    await _authRepository.clearLocalUserSession();
     emit(ProfileLoggedOut());
   }
 }

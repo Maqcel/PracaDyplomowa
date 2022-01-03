@@ -4,6 +4,7 @@ import 'package:praca_inz/domain/repositories/user_repository.dart';
 import 'package:praca_inz/extensions/build_context_extension.dart';
 import 'package:praca_inz/presentation/screens/auth/login/cubit/login_screen_cubit.dart';
 import 'package:praca_inz/presentation/screens/auth/navigation/auth_router.dart';
+import 'package:praca_inz/presentation/screens/auth/signup/cubit/signup_screen_cubit.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -34,7 +35,11 @@ class _AuthScreenState extends State<AuthScreen> {
           BlocProvider(
               create: (context) => LoginScreenCubit(
                     userRepository: context.read<UserRepository>(),
-                  ))
+                  )),
+          BlocProvider(
+              create: (context) => SignupScreenCubit(
+                    userRepository: context.read<UserRepository>(),
+                  )),
         ],
         child: Router(
           routerDelegate: _routerDelegate,

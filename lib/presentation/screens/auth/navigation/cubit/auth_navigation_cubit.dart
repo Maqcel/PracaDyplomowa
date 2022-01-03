@@ -17,4 +17,6 @@ class AuthNavigationCubit extends NavigationCubit<AuthNavigationState> {
   }
 
   void loginToSignup() => emit(AuthNavigationSignup());
+
+  void signupToLogin() => emit(AuthNavigationLogin());
 }
