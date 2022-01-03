@@ -8,22 +8,22 @@ import 'package:praca_inz/domain/failures/authorization_failure.dart';
 import 'package:praca_inz/extensions/build_context_extension.dart';
 import 'package:praca_inz/presentation/app/navigation/cubit/user_session_navigation_cubit.dart';
 import 'package:praca_inz/presentation/common/common_failure_handler.dart';
-import 'package:praca_inz/presentation/screens/auth/login/cubit/login_screen_cubit.dart';
 import 'package:praca_inz/presentation/screens/auth/navigation/cubit/auth_navigation_cubit.dart';
+import 'package:praca_inz/presentation/screens/auth/signup/cubit/signup_screen_cubit.dart';
 import 'package:praca_inz/presentation/screens/auth/widgets/email_form_input.dart';
 import 'package:praca_inz/presentation/screens/auth/widgets/error_container.dart';
 import 'package:praca_inz/presentation/screens/auth/widgets/password_form_input.dart';
 import 'package:praca_inz/presentation/widget/background_mesh.dart';
 import 'package:praca_inz/presentation/widget/button/primary_button.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({Key? key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _SignupScreenState createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> with CommonFailureHandler {
+class _SignupScreenState extends State<SignupScreen> with CommonFailureHandler {
   final TextEditingController _emailInputController = TextEditingController();
   final TextEditingController _passwordInputController =
       TextEditingController();
@@ -33,18 +33,18 @@ class _LoginScreenState extends State<LoginScreen> with CommonFailureHandler {
   @override
   void initState() {
     super.initState();
-    _emailInputController.addListener(() => {_onLoginDataChanged()});
-    _passwordInputController.addListener(() => {_onLoginDataChanged()});
+    _emailInputController.addListener(() => {_onSignupDataChanged()});
+    _passwordInputController.addListener(() => {_onSignupDataChanged()});
   }
 
   @override
   Widget build(BuildContext context) =>
-      BlocConsumer<LoginScreenCubit, LoginScreenState>(
+      BlocConsumer<SignupScreenCubit, SignupScreenState>(
         builder: (context, state) => _body(state),
         listener: (context, state) => _onStateChanged(state),
       );
 
-  Widget _body(LoginScreenState state) => Scaffold(
+  Widget _body(SignupScreenState state) => Scaffold(
         body: Stack(children: [
           const BackgroundMesh(
             shader: ColorPalette.colorPrimary1000,
@@ -55,14 +55,14 @@ class _LoginScreenState extends State<LoginScreen> with CommonFailureHandler {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _loginFormContainer(state),
+                _signupFormContainer(state),
               ],
             ),
           ),
         ]),
       );
 
-  Widget _loginFormContainer(LoginScreenState state) => Container(
+  Widget _signupFormContainer(SignupScreenState state) => Container(
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(RadiusDimension.circularMedium),
           color: context.theme.backgroundColor,
@@ -105,20 +105,20 @@ class _LoginScreenState extends State<LoginScreen> with CommonFailureHandler {
               height: PaddingDimension.large,
               width: double.infinity,
             ),
-            _loginButtonRow(state.allowLogin),
-            _signupScreenChangeButton(),
+            _signupButtonRow(state.allowSignup),
+            _loginScreenChangeButton(),
           ],
         ),
       );
 
-  Widget _errorContainer(LoginScreenState state) => AnimatedSize(
+  Widget _errorContainer(SignupScreenState state) => AnimatedSize(
         duration: AnimDimension.durationMedium,
-        child: (state is LoginError && state.failure is AuthorizationFailure)
+        child: (state is SignupError && state.failure is AuthorizationFailure)
             ? _error(state)
             : const SizedBox.shrink(),
       );
 
-  Widget _error(LoginError state) => Column(
+  Widget _error(SignupError state) => Column(
         children: [
           ErrorContainer(
             message: state.failure.message,
@@ -139,12 +139,12 @@ class _LoginScreenState extends State<LoginScreen> with CommonFailureHandler {
         ],
       );
 
-  Widget _loginButtonRow(bool allowLogin) => Row(
+  Widget _signupButtonRow(bool allowSignup) => Row(
         children: [
           PrimaryButton(
-            text: context.localizations.authScreenButtonLoginText,
-            isEnabled: allowLogin,
-            onPressed: () => _onLoginButtonClicked(),
+            text: context.localizations.authScreenButtonSignupText,
+            isEnabled: allowSignup,
+            onPressed: () => _onSignupButtonClicked(),
           )
         ],
       );
@@ -153,28 +153,28 @@ class _LoginScreenState extends State<LoginScreen> with CommonFailureHandler {
     context.focusScope.requestFocus(_passwordInputFocusNode);
   }
 
-  void _onLoginDataChanged() {
+  void _onSignupDataChanged() {
     String email = _emailInputController.text;
     String password = _passwordInputController.text;
-    context.read<LoginScreenCubit>().onLoginDataChanged(email, password);
+    context.read<SignupScreenCubit>().onSignupDataChanged(email, password);
   }
 
-  void _onLoginButtonClicked() {
+  void _onSignupButtonClicked() {
     String email = _emailInputController.text;
     String password = _passwordInputController.text;
     context.focusScope.unfocus();
-    context.read<LoginScreenCubit>().onLoginButtonClicked(email, password);
+    context.read<SignupScreenCubit>().onSignupButtonClicked(email, password);
   }
 
-  Widget _signupScreenChangeButton() => TextButton(
-        onPressed: () => context.read<AuthNavigationCubit>().loginToSignup(),
-        child: Text(context.localizations.signinScreenChangeButton),
+  Widget _loginScreenChangeButton() => TextButton(
+        onPressed: () => context.read<AuthNavigationCubit>().signupToLogin(),
+        child: Text(context.localizations.signupScreenChangeButton),
       );
 
-  void _onStateChanged(LoginScreenState state) {
-    if (state is LoginSuccess) {
+  void _onStateChanged(SignupScreenState state) {
+    if (state is SignupSuccess) {
       context.read<UserSessionNavigationCubit>().onUserSessionStateChanged();
-    } else if (state is LoginError) {
+    } else if (state is SignupError) {
       handleFailureInUi(context: context, failure: state.failure);
     }
   }

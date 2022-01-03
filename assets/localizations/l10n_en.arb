@@ -23,6 +23,18 @@
     "@authScreenButtonLoginText": {
       "description": "Text displayed on Login button"
     },
+    "authScreenButtonSignupText": "Signup",
+    "@authScreenButtonSignuoText": {
+      "description": "Text displayed on Signup button"
+    },
+    "signinScreenChangeButton": "Signup instead",
+    "@signinScreenChangeButton": {
+      "description": "Change to signup screen"
+    },
+    "signupScreenChangeButton": "Login instead",
+    "@signupScreenChangeButton": {
+      "description": "Change to login screen"
+    },
     "authScreenInputEmailLabel": "Email",
     "@authScreenInputEmailLabel": {
       "description": "Label above email input field"
@@ -46,5 +58,25 @@
     "mainBottomNavProfileLabel": "Profile",
     "@mainBottomNavProfileLabel": {
       "description": "Profile element on Main Screen bottom navigation"
+    },
+    "dialogConfirmationLogoutTitle": "Logging Out",
+    "@dialogConfirmationLogoutTitle": {
+      "description": "Title text displayed on Confirmation dialog when logging out"
+    },
+    "dialogConfirmationLogoutText": "Are you sure you want to log out?",
+    "@dialogConfirmationLogoutText": {
+      "description": "Content text displayed in body of Confirmation dialog when logging out"
+    },
+    "dialogConfirmationLogoutDismissButtonText": "Cancel",
+    "@dialogConfirmationLogoutDismissButtonText": {
+      "description": "Text displayed on dismiss button on Confirmation dialog when logging out"
+    },
+    "dialogConfirmationLogoutConfirmButtonText": "Log Out",
+    "@dialogConfirmationLogoutConfirmButtonText": {
+      "description": "Text displayed on confirm button on Confirmation dialog when logging out"
+    },
+    "profileLogoutButtonText": "Logout",
+    "@profileLogoutButtonText": {
+      "description": "Text of the logout button in profile"
     }
 }

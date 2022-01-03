@@ -14,7 +14,7 @@ class CprScreenCubit extends Cubit<CprScreenState> {
 
   void onScreenOpened() => _sensorsRepository.onCprSessionStart();
 
-  void printRaw() => _sensorsRepository.printRaw();
+  void printRaw() => _sensorsRepository.logRaw();
 
   void onCprSessionEnd() => _sensorsRepository.onCprSessionEnd();
 

@@ -8,7 +8,6 @@ class HomeScreenPageProvider {
   static List<HomeScreenPage> pages = [
     HomeScreenPage(index: 0, type: HomeScreenPageType.cprSession),
     HomeScreenPage(index: 1, type: HomeScreenPageType.profile),
-    HomeScreenPage(index: 2, type: HomeScreenPageType.development),
   ];
 
   static int getIndexByState(HomeNavigationState state) =>
@@ -19,8 +18,6 @@ class HomeScreenPageProvider {
       return HomeScreenPageType.cprSession;
     } else if (state is HomeProfile) {
       return HomeScreenPageType.profile;
-    } else if (state is HomeDevelopment) {
-      return HomeScreenPageType.development;
     } else {
       throw ArgumentError('State $state couldn\'t be mapped to page type');
     }
@@ -73,19 +70,6 @@ class HomeScreenPageProvider {
           ),
           activeIcon: Icon(
             Icons.people_alt_outlined,
-            color: activeIconColor,
-          ),
-        );
-      case HomeScreenPageType.development:
-        return BottomNavigationBarItem(
-          backgroundColor: backgroundColor,
-          label: 'Development',
-          icon: Icon(
-            Icons.developer_mode_outlined,
-            color: idleIconColor,
-          ),
-          activeIcon: Icon(
-            Icons.developer_mode_outlined,
             color: activeIconColor,
           ),
         );

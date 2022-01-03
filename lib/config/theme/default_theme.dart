@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:praca_inz/config/theme/color_palette.dart';
 import 'package:praca_inz/config/theme/default_text_styles.dart';
 import 'package:praca_inz/config/theme/text_styles_definition.dart';
