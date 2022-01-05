@@ -10,13 +10,15 @@ class CprScreenCubit extends Cubit<CprScreenState> {
 
   CprScreenCubit({required SensorsRepository sensorsRepository})
       : _sensorsRepository = sensorsRepository,
-        super(CprInitial());
+        super(CprInformation());
 
   void onScreenOpened() => _sensorsRepository.onCprSessionStart();
 
-  void printRaw() => _sensorsRepository.logRaw();
+  // void onCprSessionEnd() => _sensorsRepository.onCprSessionEnd();
 
-  void onCprSessionEnd() => _sensorsRepository.onCprSessionEnd();
+  // void onScreenClosed() => _sensorsRepository.changeAccelerometerStreamState();
 
-  void onScreenClosed() => _sensorsRepository.changeAccelerometerStreamState();
+  void onCprSessionStart() => emit(CprSessionStart());
+
+  void onCprSessionStop() => emit(CprInformation());
 }

@@ -40,7 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
           routerDelegate: _routerDelegate,
           backButtonDispatcher: _backButtonDispatcher,
         ),
-        bottomNavigationBar: _bottomNavigationBar(state),
+        bottomNavigationBar:
+            state.cprSessionInProgress ? null : _bottomNavigationBar(state),
       );
 
   BottomNavigationBar _bottomNavigationBar(HomeNavigationState state) =>
