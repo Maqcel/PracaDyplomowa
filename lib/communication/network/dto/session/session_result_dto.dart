@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:praca_inz/communication/network/dto/session/sensor_data_dto.dart';
 
 part 'session_result_dto.g.dart';
 
@@ -17,11 +18,19 @@ class SessionResultDTO {
   @JsonKey(name: 'temporaryCompressionRate', defaultValue: [])
   final List<double> temporaryCompressionRate;
 
+  @JsonKey(name: 'rawData', defaultValue: [])
+  final List<SensorDataDTO>? rawData;
+
+  @JsonKey(name: 'filteredData', defaultValue: [])
+  final List<SensorDataDTO>? filteredData;
+
   SessionResultDTO({
     required this.sessionDate,
     required this.numberOfChestCompressions,
     required this.averageCompressionsRate,
     required this.temporaryCompressionRate,
+    this.rawData,
+    this.filteredData,
   });
 
   factory SessionResultDTO.fromJson(Map<String, dynamic> json) =>

@@ -66,6 +66,7 @@ class _ProfileScreenState extends State<ProfileScreen>
 
   Widget _userProfile(ProfileLoaded state) => ProfileScreenBuilder.build(
         context: context,
+        user: state.userProfile,
         onLogoutButtonClicked: _onLogoutClicked,
       );
 
