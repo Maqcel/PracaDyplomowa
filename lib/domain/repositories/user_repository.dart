@@ -6,8 +6,10 @@ import 'package:praca_inz/config/paths.dart';
 import 'package:praca_inz/domain/common/failure.dart';
 import 'package:praca_inz/domain/common/generic_call.dart';
 import 'package:praca_inz/domain/failures/authorization_failure.dart';
+import 'package:praca_inz/domain/models/user_profile.dart';
 
 class UserRepository {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   Future<Either<Failure, UserCredential>> login({
@@ -43,9 +45,8 @@ class UserRepository {
     UserCredential userCredential = await _firebaseAuth
         .createUserWithEmailAndPassword(email: email, password: password);
 
-    DocumentReference userReference = FirebaseFirestore.instance
-        .collection(Paths.usersPath)
-        .doc(userCredential.user!.uid);
+    DocumentReference userReference =
+        _firestore.collection(Paths.usersPath).doc(userCredential.user!.uid);
 
     await userReference.set(
       UserProfileDTO(
@@ -59,6 +60,12 @@ class UserRepository {
 
     return userCredential;
   }
+
+  Future<UserProfile> getUserProfile(String userUid) async =>
+      UserProfile.fromDTO(UserProfileDTO.fromJson(
+        (await _firestore.collection(Paths.usersPath).doc(userUid).get())
+            .data()!,
+      ));
 
   Future<void> logout() async => await FirebaseAuth.instance.signOut();
 }
