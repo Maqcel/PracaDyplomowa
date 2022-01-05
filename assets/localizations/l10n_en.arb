@@ -78,5 +78,29 @@
     "profileLogoutButtonText": "Logout",
     "@profileLogoutButtonText": {
       "description": "Text of the logout button in profile"
+    },
+    "onboardingInputHintSurname": "Enter surname",
+    "@onboardingInputHintSurname": {
+      "description": "Input field hint in surname section"
+    },
+    "onboardingInputSurnameLabel": "Surname",
+    "@onboardingInputSurnameLabel": {
+      "description": "Input field label in name section"
+    },
+    "onboardingInputHintName": "Enter name",
+    "@onboardingInputHintName": {
+      "description": "Input field hint in name section"
+    },
+    "onboardingInputNameLabel": "Name",
+    "@onboardingInputNameLabel": {
+      "description": "Input field label in name section"
+    },
+    "onboardingInputGroupLabel": "Pick your group",
+    "@onboardingInputGroupLabel": {
+      "description": "Input field label in group section"
+    },
+    "onboardingSubmitButtonText": "Submit",
+    "@onboardingSubmitButtonText": {
+      "description": "Button text for submiting onboarding form"
     }
 }

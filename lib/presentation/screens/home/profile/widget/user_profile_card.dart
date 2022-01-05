@@ -41,8 +41,8 @@ class UserProfileCard extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.25,
           width: MediaQuery.of(context).size.width,
           child: const BackgroundMesh(
-            shader: ColorPalette.colorPrimary800,
-            foreground: ColorPalette.colorSecondary1000,
+            shader: ColorPalette.colorPrimary1000,
+            foreground: ColorPalette.colorPrimary800,
           ),
         ),
       );
