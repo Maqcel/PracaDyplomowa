@@ -9,14 +9,39 @@ class OnboardingScreenCubit extends Cubit<OnboardingScreenState> {
   final OnboardingRepository _onboardingRepository;
   OnboardingScreenCubit({required OnboardingRepository onboardingRepository})
       : _onboardingRepository = onboardingRepository,
-        super(const OnboardingInitial());
+        super(const OnboardingLoading());
 
-  void initOnboarding() => emit(const OnboardingStatus(
+  Future<void> initOnboarding() async => emit(OnboardingStatus(
+        listOfGroups: await _onboardingRepository.fetchListOfGroups(),
         onboardingCompleted: false,
         firstName: '',
         lastName: '',
         groupId: '',
       ));
+
+  void changeOnboardingPersonalData({
+    required String name,
+    required String surname,
+    required String groupId,
+  }) =>
+      emit((state as OnboardingStatus).copyWith(
+        onboardingCompleted:
+            _checkIfAlreadyCompleted(state as OnboardingStatus) ||
+                (name.isNotEmpty && surname.isNotEmpty && groupId.isNotEmpty),
+        firstName: name,
+        lastName: surname,
+        groupId: groupId,
+      ));
+
+  bool _checkIfAlreadyCompleted(OnboardingStatus currentState) {
+    if (currentState.firstName.isNotEmpty &&
+        currentState.lastName.isNotEmpty &&
+        currentState.groupId.isNotEmpty) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   Future<void> finishOnboarding(OnboardingStatus state) async {
     _onboardingRepository.completeOnboarding(OnboardingCompletedRequestDTO(

@@ -7,6 +7,12 @@ class OnboardingRepository {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
+  Future<List<String>> fetchListOfGroups() async =>
+      (await _firestore.collection(Paths.groupsPath).get())
+          .docs
+          .map((doc) => doc.id)
+          .toList();
+
   Future<void> completeOnboarding(
           OnboardingCompletedRequestDTO onboardingData) async =>
       await _firestore

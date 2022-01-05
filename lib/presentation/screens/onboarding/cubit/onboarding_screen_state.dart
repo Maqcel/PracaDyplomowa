@@ -9,16 +9,18 @@ abstract class OnboardingScreenState extends Equatable {
   List<Object?> get props => [onboardingCompleted];
 }
 
-class OnboardingInitial extends OnboardingScreenState {
-  const OnboardingInitial() : super(onboardingCompleted: false);
+class OnboardingLoading extends OnboardingScreenState {
+  const OnboardingLoading() : super(onboardingCompleted: false);
 }
 
 class OnboardingStatus extends OnboardingScreenState {
+  final List<String> listOfGroups;
   final String firstName;
   final String lastName;
   final String groupId;
 
   const OnboardingStatus({
+    required this.listOfGroups,
     required bool onboardingCompleted,
     required this.firstName,
     required this.lastName,
@@ -26,12 +28,14 @@ class OnboardingStatus extends OnboardingScreenState {
   }) : super(onboardingCompleted: onboardingCompleted);
 
   OnboardingStatus copyWith({
+    List<String>? listOfGroups,
     bool? onboardingCompleted,
     String? firstName,
     String? lastName,
     String? groupId,
   }) =>
       OnboardingStatus(
+        listOfGroups: listOfGroups ?? this.listOfGroups,
         onboardingCompleted: onboardingCompleted ?? this.onboardingCompleted,
         firstName: firstName ?? this.firstName,
         lastName: lastName ?? this.lastName,
