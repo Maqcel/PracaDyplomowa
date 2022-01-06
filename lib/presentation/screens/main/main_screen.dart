@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:praca_inz/domain/repositories/auth_repository.dart';
+import 'package:praca_inz/domain/repositories/cpr_repository.dart';
 import 'package:praca_inz/domain/repositories/sensors_repository.dart';
 import 'package:praca_inz/domain/repositories/user_repository.dart';
 import 'package:praca_inz/extensions/build_context_extension.dart';
@@ -36,7 +37,9 @@ class _MainScreenState extends State<MainScreen> {
         providers: [
           BlocProvider<CprScreenCubit>(
             create: (context) => CprScreenCubit(
-                sensorsRepository: context.read<SensorsRepository>()),
+              sensorsRepository: context.read<SensorsRepository>(),
+              cprRepository: context.read<CprRepository>(),
+            ),
           ),
           BlocProvider<ProfileScreenCubit>(
             create: (context) => ProfileScreenCubit(

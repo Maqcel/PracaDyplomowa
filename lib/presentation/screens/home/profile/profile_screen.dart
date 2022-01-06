@@ -6,7 +6,6 @@ import 'package:praca_inz/extensions/build_context_extension.dart';
 import 'package:praca_inz/presentation/app/navigation/cubit/user_session_navigation_cubit.dart';
 import 'package:praca_inz/presentation/common/common_failure_handler.dart';
 import 'package:praca_inz/presentation/dialogs/confirmation_dialog.dart';
-import 'package:praca_inz/presentation/screens/home/navigation/cubit/home_navigation_cubit.dart';
 import 'package:praca_inz/presentation/screens/home/profile/cubit/profile_screen_cubit.dart';
 import 'package:praca_inz/presentation/screens/home/profile/profile_screen_builder.dart';
 import 'package:praca_inz/presentation/screens/main/navigation/cubit/main_navigation_cubit.dart';
@@ -105,7 +104,6 @@ class _ProfileScreenState extends State<ProfileScreen>
   void _onLogoutSuccess() {
     context.read<UserSessionNavigationCubit>().onUserSessionStateChanged();
     context.read<MainNavigationCubit>().clearState();
-    context.read<HomeNavigationCubit>().clearState();
   }
 
   void _onProfileLoadError(Failure failure) => handleFailureInUi(

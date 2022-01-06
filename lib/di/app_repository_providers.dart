@@ -3,6 +3,7 @@ import 'package:praca_inz/communication/persistence/persistent_storage.dart';
 import 'package:praca_inz/communication/sensors/sensors_services.dart';
 import 'package:praca_inz/di/service_locator.dart';
 import 'package:praca_inz/domain/repositories/auth_repository.dart';
+import 'package:praca_inz/domain/repositories/cpr_repository.dart';
 import 'package:praca_inz/domain/repositories/onboarding_repository.dart';
 import 'package:praca_inz/domain/repositories/sensors_repository.dart';
 import 'package:praca_inz/domain/repositories/user_repository.dart';
@@ -19,6 +20,10 @@ class AppRepositoryProviders {
         ),
         RepositoryProvider<UserRepository>(
           create: (context) => UserRepository(),
+        ),
+        RepositoryProvider<CprRepository>(
+          create: (context) => CprRepository(
+              persistentStorage: ServiceLocator.get<PersistentStorage>()),
         ),
         RepositoryProvider<SensorsRepository>(
           create: (context) => SensorsRepository(

@@ -7,9 +7,20 @@ abstract class CprScreenState extends Equatable {
   List<Object> get props => [];
 }
 
-class CprInformation extends CprScreenState {}
+class CprInitial extends CprScreenState {}
+
+class CprInformation extends CprScreenState {
+  final bool shouldShowCprInstruction;
+
+  const CprInformation({required this.shouldShowCprInstruction});
+
+  @override
+  List<Object> get props => [shouldShowCprInstruction];
+}
 
 class CprSessionStart extends CprScreenState {}
+
+class CprSessionWaiting extends CprScreenState {}
 
 class CprSessionProgress extends CprScreenState {}
 

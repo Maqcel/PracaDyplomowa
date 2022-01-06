@@ -13,6 +13,7 @@ import 'package:praca_inz/presentation/screens/auth/signup/cubit/signup_screen_c
 import 'package:praca_inz/presentation/screens/auth/widgets/email_form_input.dart';
 import 'package:praca_inz/presentation/screens/auth/widgets/error_container.dart';
 import 'package:praca_inz/presentation/screens/auth/widgets/password_form_input.dart';
+import 'package:praca_inz/presentation/screens/home/navigation/cubit/home_navigation_cubit.dart';
 import 'package:praca_inz/presentation/widget/background_mesh.dart';
 import 'package:praca_inz/presentation/widget/button/primary_button.dart';
 
@@ -173,6 +174,7 @@ class _SignupScreenState extends State<SignupScreen> with CommonFailureHandler {
 
   void _onStateChanged(SignupScreenState state) {
     if (state is SignupSuccess) {
+      context.read<HomeNavigationCubit>().clearState();
       context.read<UserSessionNavigationCubit>().onUserSessionStateChanged();
     } else if (state is SignupError) {
       handleFailureInUi(context: context, failure: state.failure);
