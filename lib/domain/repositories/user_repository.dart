@@ -66,6 +66,4 @@ class UserRepository {
         (await _firestore.collection(Paths.usersPath).doc(userUid).get())
             .data()!,
       ));
-
-  Future<void> logout() async => await FirebaseAuth.instance.signOut();
 }

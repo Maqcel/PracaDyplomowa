@@ -24,6 +24,9 @@ dependencies:
   google_fonts: 2.1.0
   flutter_svg: 0.23.0+1
 
+  # Data & Persistence
+  shared_preferences: 2.0.11
+
   #Network
   cached_network_image: 3.1.0
 

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:equatable/equatable.dart';
 import 'package:praca_inz/presentation/common/navigation/navigation_cubit.dart';
 import 'package:praca_inz/presentation/screens/home/home_screen_page_type.dart';

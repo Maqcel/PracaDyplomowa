@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:praca_inz/communication/persistence/persistent_storage.dart';
 import 'package:praca_inz/communication/sensors/sensors_services.dart';
 import 'package:praca_inz/di/service_locator.dart';
 import 'package:praca_inz/domain/repositories/auth_repository.dart';
@@ -12,7 +13,9 @@ class AppRepositoryProviders {
           create: (context) => OnboardingRepository(),
         ),
         RepositoryProvider<AuthRepository>(
-          create: (context) => AuthRepository(),
+          create: (context) => AuthRepository(
+            persistentStorage: ServiceLocator.get<PersistentStorage>(),
+          ),
         ),
         RepositoryProvider<UserRepository>(
           create: (context) => UserRepository(),
