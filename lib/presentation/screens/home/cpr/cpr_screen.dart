@@ -1,9 +1,11 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:praca_inz/config/dimensions/animation_dimension.dart';
+import 'package:praca_inz/extensions/build_context_extension.dart';
+import 'package:praca_inz/presentation/dialogs/cpr_instruction_dialog.dart';
+import 'package:praca_inz/presentation/screens/home/cpr/cpr_screen_builder.dart';
 import 'package:praca_inz/presentation/screens/home/cpr/cubit/cpr_screen_cubit.dart';
-import 'package:praca_inz/presentation/screens/main/navigation/cubit/main_navigation_cubit.dart';
+import 'package:praca_inz/presentation/screens/home/navigation/cubit/home_navigation_cubit.dart';
 
 class CprScreen extends StatefulWidget {
   const CprScreen({Key? key}) : super(key: key);
@@ -13,54 +15,84 @@ class CprScreen extends StatefulWidget {
 }
 
 class _CprScreenState extends State<CprScreen> {
-  /// This callback needs to be stored due to the fact that
-  /// We can't access [context.read] inside dispose
-  late final Function() _disposeCallback;
-
   @override
   void initState() {
     super.initState();
     context.read<CprScreenCubit>().onScreenOpened();
-    _disposeCallback = context.read<CprScreenCubit>().onScreenClosed;
-
-    /// Testing period
-    Timer(
-      const Duration(minutes: 1),
-      () => context.read<CprScreenCubit>().onCprSessionEnd(),
-    );
   }
 
   @override
   Widget build(BuildContext context) =>
-      BlocListener<MainNavigationCubit, MainNavigationState>(
-          listener: (context, state) => _onMainNavigationStateChanged(state),
-          child: BlocConsumer<CprScreenCubit, CprScreenState>(
-            buildWhen: (previous, current) => _buildWhen(previous, current),
-            builder: (context, state) => _body(state),
-            listener: (context, state) => _onStateChanged(state),
-          ));
-
-  // TODO: Implement action on change in MainNavigation if needed
-  void _onMainNavigationStateChanged(MainNavigationState state) {}
-
-  bool _buildWhen(CprScreenState previous, CprScreenState current) =>
-      (current is CprInitial);
-
-  Widget _body(CprScreenState state) => Scaffold(
-        body: Center(
-          child: ElevatedButton(
-            onPressed: () => context.read<CprScreenCubit>().printRaw(),
-            child: const Text('PRINT RAW DATA'),
-          ),
+      BlocListener<HomeNavigationCubit, HomeNavigationState>(
+        listener: (context, state) => _onHomeNavigationStateChanged(state),
+        child: BlocConsumer<CprScreenCubit, CprScreenState>(
+          buildWhen: (previous, current) => _buildWhen(previous, current),
+          builder: (context, state) => _body(state),
+          listener: (context, state) => _onStateChanged(state),
         ),
       );
 
-  // TODO: Implement actions on change in local state
-  void _onStateChanged(CprScreenState state) {}
+  void _onHomeNavigationStateChanged(HomeNavigationState state) =>
+      state is HomeCprSession
+          ? state.cprSessionInProgress
+              ? context.read<CprScreenCubit>().onCprSessionStart()
+              : context.read<CprScreenCubit>().onCprSessionEnd()
+          : null;
 
-  @override
-  void dispose() {
-    _disposeCallback();
-    super.dispose();
+  bool _buildWhen(CprScreenState previous, CprScreenState current) =>
+      (current is CprInitial ||
+          current is CprInformation ||
+          current is CprSessionStart ||
+          current is CprSessionWaiting ||
+          current is CprSessionProgress ||
+          current is CprSessionSuccess ||
+          current is CprSessionSubmit);
+
+  Widget _body(CprScreenState state) => Scaffold(
+        body: AnimatedSwitcher(
+          duration: AnimDimension.durationShort,
+          child: _content(state),
+        ),
+      );
+
+  Widget _content(CprScreenState state) {
+    if (state is! CprInitial) {
+      return _cprScreen(state);
+    } else {
+      return _loadingIndicator();
+    }
+  }
+
+  Widget _cprScreen(CprScreenState state) => CprScreenBuilder.build(
+        context: context,
+        onStartSessionClicked: _onStartSessionClicked,
+        onSubmitSessionClicked: _onSubmitSessionClicked,
+      );
+
+  void _onStartSessionClicked() =>
+      context.read<HomeNavigationCubit>().onCprSessionStart();
+
+  void _onSubmitSessionClicked() {
+    context.read<HomeNavigationCubit>().onCprSessionStart();
+  }
+
+  Widget _loadingIndicator() => Center(
+        child: CircularProgressIndicator(
+          color: context.theme.colorScheme.secondary,
+        ),
+      );
+
+  void _onStateChanged(CprScreenState state) {
+    if (state is CprInformation && state.shouldShowCprInstruction) {
+      _showCprInstructionDialog();
+    }
+  }
+
+  Future<void> _showCprInstructionDialog() async {
+    await showDialog<bool>(
+      context: context,
+      builder: (context) => const CprInstructionDialog(),
+    );
+    context.read<CprScreenCubit>().onCprInstructionPop();
   }
 }

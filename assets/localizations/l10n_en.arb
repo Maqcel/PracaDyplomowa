@@ -102,5 +102,17 @@
     "onboardingSubmitButtonText": "Submit",
     "@onboardingSubmitButtonText": {
       "description": "Button text for submiting onboarding form"
+    },
+    "cprInstructionDialogTitleText": "Cpr Instructions",
+    "@cprInstructionDialogTitleText": {
+      "description": "Title text for cpr instruction dialog"
+    },
+    "cprInstructionDialogButtonText": "Got it!",
+    "@cprInstructionDialogButtonText": {
+      "description": "Button text for cpr instruction dialog"
+    },
+    "cprInstructionDialogAuthorCredits": "Designed by macrovector / Freepik",
+    "@cprInstructionDialogAuthorCredits": {
+      "description": "Freepik Terms of Use"
     }
 }

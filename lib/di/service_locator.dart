@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:get_it/get_it.dart';
+import 'package:praca_inz/communication/persistence/persistent_storage.dart';
+import 'package:praca_inz/communication/persistence/shared_preferences_persistent_storage.dart';
 import 'package:praca_inz/communication/sensors/accelerometer_sensor.dart';
 import 'package:praca_inz/communication/sensors/gyroscope_sensor.dart';
 import 'package:praca_inz/communication/sensors/sensors_services.dart';
@@ -24,6 +26,7 @@ class ServiceLocator {
     log(currentBuild.toString());
     _initAnalytics();
     _initSensors();
+    _initSharedPreferences();
   }
 
   static void _initAnalytics() =>
@@ -35,6 +38,10 @@ class ServiceLocator {
     _getIt
         .registerLazySingleton<GyroscopeSensorService>(() => GyroscopeSensor());
   }
+
+  static void _initSharedPreferences() =>
+      _getIt.registerSingleton<PersistentStorage>(
+          SharedPreferencesPersistentStorage());
 
   static T get<T extends Object>() => _getIt.get<T>();
 }

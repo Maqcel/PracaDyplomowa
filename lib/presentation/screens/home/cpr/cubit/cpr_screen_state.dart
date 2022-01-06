@@ -9,14 +9,29 @@ abstract class CprScreenState extends Equatable {
 
 class CprInitial extends CprScreenState {}
 
-class CprProcessing extends CprScreenState {}
+class CprInformation extends CprScreenState {
+  final bool shouldShowCprInstruction;
 
-class CprProcessingSuccess extends CprScreenState {}
+  const CprInformation({required this.shouldShowCprInstruction});
 
-class CprProcessingError extends CprScreenState {
+  @override
+  List<Object> get props => [shouldShowCprInstruction];
+}
+
+class CprSessionStart extends CprScreenState {}
+
+class CprSessionWaiting extends CprScreenState {}
+
+class CprSessionProgress extends CprScreenState {}
+
+class CprSessionSuccess extends CprScreenState {}
+
+class CprSessionSubmit extends CprScreenState {}
+
+class CprSubmitError extends CprScreenState {
   final Failure failure;
 
-  const CprProcessingError({required this.failure});
+  const CprSubmitError({required this.failure});
 
   @override
   List<Object> get props => [failure];

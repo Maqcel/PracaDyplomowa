@@ -1,22 +1,44 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:praca_inz/domain/common/failure.dart';
+import 'package:praca_inz/domain/repositories/cpr_repository.dart';
 import 'package:praca_inz/domain/repositories/sensors_repository.dart';
 
 part 'cpr_screen_state.dart';
 
 class CprScreenCubit extends Cubit<CprScreenState> {
   final SensorsRepository _sensorsRepository;
+  final CprRepository _cprRepository;
 
-  CprScreenCubit({required SensorsRepository sensorsRepository})
-      : _sensorsRepository = sensorsRepository,
+  CprScreenCubit({
+    required SensorsRepository sensorsRepository,
+    required CprRepository cprRepository,
+  })  : _sensorsRepository = sensorsRepository,
+        _cprRepository = cprRepository,
         super(CprInitial());
 
-  void onScreenOpened() => _sensorsRepository.onCprSessionStart();
+  Future<void> onScreenOpened() async => emit(CprInformation(
+        shouldShowCprInstruction:
+            await _cprRepository.shouldShowCprInstruction(),
+      ));
 
-  void printRaw() => _sensorsRepository.logRaw();
+  void onCprInstructionPop() => _cprRepository.cprInstructionClosed();
 
-  void onCprSessionEnd() => _sensorsRepository.onCprSessionEnd();
+  void onCprSessionStart() {
+    emit(CprSessionStart());
+    _startReceivingDataAfterCountdown();
+  }
 
-  void onScreenClosed() => _sensorsRepository.changeAccelerometerStreamState();
+  Future<void> _startReceivingDataAfterCountdown() async {
+    await Future.delayed(const Duration(seconds: 3));
+    _sensorsRepository.onCprSessionStart();
+  }
+
+  void onCprSessionEnd() {
+    emit(CprInitial());
+    _sensorsRepository.changeAccelerometerStreamState();
+    _sensorsRepository.onCprSessionEnd();
+  }
 }
