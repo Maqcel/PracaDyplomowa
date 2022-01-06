@@ -27,17 +27,18 @@ class CprScreenCubit extends Cubit<CprScreenState> {
   void onCprInstructionPop() => _cprRepository.cprInstructionClosed();
 
   void onCprSessionStart() {
-    emit(CprSessionStart());
+    emit(CprSessionWaiting());
     _startReceivingDataAfterCountdown();
   }
 
   Future<void> _startReceivingDataAfterCountdown() async {
     await Future.delayed(const Duration(seconds: 3));
+    emit(CprSessionProgress());
     _sensorsRepository.onCprSessionStart();
   }
 
   void onCprSessionEnd() {
-    emit(CprInitial());
+    emit(const CprInformation(shouldShowCprInstruction: false));
     _sensorsRepository.changeAccelerometerStreamState();
     _sensorsRepository.onCprSessionEnd();
   }
