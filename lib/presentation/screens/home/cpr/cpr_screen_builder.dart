@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:praca_inz/config/dimensions/padding_dimension.dart';
-import 'package:praca_inz/extensions/build_context_extension.dart';
+import 'package:praca_inz/presentation/screens/home/cpr/cpr_layout_provider.dart';
+import 'package:praca_inz/presentation/screens/home/cpr/cubit/cpr_screen_cubit.dart';
 
 class CprScreenBuilder {
   static Widget build({
     required BuildContext context,
+    required CprScreenState state,
     required Function() onStartSessionClicked,
     required Function() onSubmitSessionClicked,
   }) =>
-      const SizedBox();
+      CprLayoutProvider.renderCurrentLayout(
+        state,
+        onStartSessionClicked,
+        onSubmitSessionClicked,
+      );
 }

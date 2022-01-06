@@ -18,8 +18,6 @@ class CprInformation extends CprScreenState {
   List<Object> get props => [shouldShowCprInstruction];
 }
 
-class CprSessionStart extends CprScreenState {}
-
 class CprSessionWaiting extends CprScreenState {}
 
 class CprSessionProgress extends CprScreenState {}

@@ -114,5 +114,13 @@
     "cprInstructionDialogAuthorCredits": "Designed by macrovector / Freepik",
     "@cprInstructionDialogAuthorCredits": {
       "description": "Freepik Terms of Use"
+    },
+    "cprInformationStartSessionButtonText": "Start session",
+    "@cprInformationStartSessionButtonText": {
+      "description": "Button text on cpr information screen used to start session"
+    },
+    "cprSessionSubmitButtonText": "Submit session",
+    "@cprSessionSubmitButtonText": {
+      "description": "Button text on cpr session completed screen used to start session"
     }
 }

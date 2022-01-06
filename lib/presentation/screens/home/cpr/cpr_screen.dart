@@ -42,7 +42,6 @@ class _CprScreenState extends State<CprScreen> {
   bool _buildWhen(CprScreenState previous, CprScreenState current) =>
       (current is CprInitial ||
           current is CprInformation ||
-          current is CprSessionStart ||
           current is CprSessionWaiting ||
           current is CprSessionProgress ||
           current is CprSessionSuccess ||
@@ -65,6 +64,7 @@ class _CprScreenState extends State<CprScreen> {
 
   Widget _cprScreen(CprScreenState state) => CprScreenBuilder.build(
         context: context,
+        state: state,
         onStartSessionClicked: _onStartSessionClicked,
         onSubmitSessionClicked: _onSubmitSessionClicked,
       );
@@ -73,7 +73,7 @@ class _CprScreenState extends State<CprScreen> {
       context.read<HomeNavigationCubit>().onCprSessionStart();
 
   void _onSubmitSessionClicked() {
-    context.read<HomeNavigationCubit>().onCprSessionStart();
+    context.read<HomeNavigationCubit>().onCprSessionStop();
   }
 
   Widget _loadingIndicator() => Center(
