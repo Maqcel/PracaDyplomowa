@@ -122,5 +122,25 @@
     "cprSessionSubmitButtonText": "Submit session",
     "@cprSessionSubmitButtonText": {
       "description": "Button text on cpr session completed screen used to start session"
+    },
+    "cprSessionInformationTitleText": "How it works?",
+    "@cprSessionInformationTitleText": {
+      "description": "Title text on cpr session information screen"
+    },
+    "cprSessionInformationStepOneText": "Familiarize oneself with rest of the steps, then click the button to start session.\nAfter short countdown to proceed with rest of the steps the CPR measurements will start!",
+    "@cprSessionInformationStepOneText": {
+      "description": "Step one on cpr information screen"
+    },
+    "cprSessionInformationStepTwoText": "Insert your device inside the phantom, below your hands when you will perform CPR.",
+    "@cprSessionInformationStepTwoText": {
+      "description": "Step two on cpr information screen"
+    },
+    "cprSessionInformationStepThreeText": "CPR session takes one minute to finish, we are only evaluating the compressions frequency!\nRemember in time of the real accident to perform complete CPR with exhaling air into subject's mouth or nose.",
+    "@cprSessionInformationStepThreeText": {
+      "description": "Step three on cpr information screen"
+    },
+    "cprSessionInformationStepFourText": "Our calculations depend heavily on the placement of the device for the best results ensure only vertical movement",
+    "@cprSessionInformationStepFourText": {
+      "description": "Step four on cpr information screen"
     }
 }
