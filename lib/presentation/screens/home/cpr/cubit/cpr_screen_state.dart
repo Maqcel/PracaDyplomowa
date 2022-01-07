@@ -22,8 +22,6 @@ class CprSessionWaiting extends CprScreenState {}
 
 class CprSessionProgress extends CprScreenState {}
 
-class CprSessionSuccess extends CprScreenState {}
-
 class CprSessionSubmit extends CprScreenState {}
 
 class CprSubmitError extends CprScreenState {

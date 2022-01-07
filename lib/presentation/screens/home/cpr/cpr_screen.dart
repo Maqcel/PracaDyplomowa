@@ -44,7 +44,6 @@ class _CprScreenState extends State<CprScreen> {
           current is CprInformation ||
           current is CprSessionWaiting ||
           current is CprSessionProgress ||
-          current is CprSessionSuccess ||
           current is CprSessionSubmit);
 
   Widget _body(CprScreenState state) => Scaffold(

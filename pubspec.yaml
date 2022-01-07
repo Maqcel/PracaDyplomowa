@@ -44,10 +44,10 @@ dependencies:
   sensors_plus: 1.2.1
 
   #Integrations
-  cloud_firestore: 2.5.3
+  cloud_firestore: 3.1.5
   firebase_auth: 3.1.3
   firebase_analytics: 8.3.2
-  firebase_core: 1.7.0
+  firebase_core: 1.10.2
   firebase_crashlytics: 2.2.3
   firebase_performance: 0.7.1+1
 
