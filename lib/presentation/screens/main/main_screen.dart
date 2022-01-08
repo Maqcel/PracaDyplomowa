@@ -39,6 +39,7 @@ class _MainScreenState extends State<MainScreen> {
             create: (context) => CprScreenCubit(
               sensorsRepository: context.read<SensorsRepository>(),
               cprRepository: context.read<CprRepository>(),
+              authRepository: context.read<AuthRepository>(),
             ),
           ),
           BlocProvider<ProfileScreenCubit>(

@@ -18,5 +18,12 @@ class OnboardingRepository {
       await _firestore
           .collection(Paths.usersPath)
           .doc(_firebaseAuth.currentUser!.uid)
-          .update(onboardingData.toJson());
+          .update(onboardingData.toJson())
+          .then((value) => _firestore
+                  .collection(Paths.groupsPath)
+                  .doc(onboardingData.groupId)
+                  .update({
+                'members':
+                    FieldValue.arrayUnion([_firebaseAuth.currentUser!.uid])
+              }));
 }

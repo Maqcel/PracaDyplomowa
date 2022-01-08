@@ -4,22 +4,26 @@ part 'sensor_data_dto.g.dart';
 
 @JsonSerializable()
 class SensorDataDTO {
-  @JsonKey(name: 'timestamp')
+  @JsonKey(name: 't')
   final int timestamp;
 
-  @JsonKey(name: 'xAxis')
-  final double xAxis;
+  //? Those fields are putting too much stress on update to firestore
+  //? That's why I needed to get rid of those also we are using
+  //? Only zAxis in our Filtering process
 
-  @JsonKey(name: 'yAxis')
-  final double yAxis;
+  // @JsonKey(name: 'xAxis')
+  // final double xAxis;
 
-  @JsonKey(name: 'zAxis')
+  // @JsonKey(name: 'yAxis')
+  // final double yAxis;
+
+  @JsonKey(name: 'z')
   final double zAxis;
 
   const SensorDataDTO({
     required this.timestamp,
-    required this.xAxis,
-    required this.yAxis,
+    // required this.xAxis,
+    // required this.yAxis,
     required this.zAxis,
   });
 

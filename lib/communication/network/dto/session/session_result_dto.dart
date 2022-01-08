@@ -19,18 +19,14 @@ class SessionResultDTO {
   final List<double> temporaryCompressionRate;
 
   @JsonKey(name: 'rawData', defaultValue: [])
-  final List<SensorDataDTO>? rawData;
-
-  @JsonKey(name: 'filteredData', defaultValue: [])
-  final List<SensorDataDTO>? filteredData;
+  final List<Map<String, dynamic>> rawData;
 
   SessionResultDTO({
     required this.sessionDate,
     required this.numberOfChestCompressions,
     required this.averageCompressionsRate,
     required this.temporaryCompressionRate,
-    this.rawData,
-    this.filteredData,
+    required this.rawData,
   });
 
   factory SessionResultDTO.fromJson(Map<String, dynamic> json) =>

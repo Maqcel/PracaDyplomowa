@@ -180,5 +180,21 @@
     "cprSessionSessionResultsTemporaryNoCompressionsText": "Waiting for compressions!",
     "@cprSessionSessionResultsTemporaryNoCompressionsText": {
       "description": "Temporary compression rate calculated for 10 last compressions for session results are yet not available inside cpr sessions screens"
+    },
+    "cprSessionSessionSubmitTitle": "Save this session?",
+    "@cprSessionSessionSubmitTitle": {
+      "description": "Title text displayed on Confirmation dialog when submiting session"
+    },
+    "cprSessionSessionSubmitText": "Do you want to store this session, and save it for evaluation?",
+    "@cprSessionSessionSubmitText": {
+      "description": "Content text displayed in body of Confirmation dialog when submiting session"
+    },
+    "cprSessionSessionSubmitDismissButtonText": "Discard",
+    "@cprSessionSessionSubmitDismissButtonText": {
+      "description": "Text displayed on dismiss button on Confirmation dialog when sumbiting session"
+    },
+    "cprSessionSessionSubmitConfirmButtonText": "Submit",
+    "@cprSessionSessionSubmitConfirmButtonText": {
+      "description": "Text displayed on confirm button on Confirmation dialog when sumbiting session"
     }
 }

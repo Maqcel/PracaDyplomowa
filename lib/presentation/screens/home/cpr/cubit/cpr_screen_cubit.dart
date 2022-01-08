@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:praca_inz/domain/common/failure.dart';
 import 'package:praca_inz/domain/models/session_result.dart';
+import 'package:praca_inz/domain/repositories/auth_repository.dart';
 import 'package:praca_inz/domain/repositories/cpr_repository.dart';
 import 'package:praca_inz/domain/repositories/sensors_repository.dart';
 
@@ -12,12 +13,15 @@ part 'cpr_screen_state.dart';
 class CprScreenCubit extends Cubit<CprScreenState> {
   final SensorsRepository _sensorsRepository;
   final CprRepository _cprRepository;
+  final AuthRepository _authRepository;
 
   CprScreenCubit({
     required SensorsRepository sensorsRepository,
     required CprRepository cprRepository,
+    required AuthRepository authRepository,
   })  : _sensorsRepository = sensorsRepository,
         _cprRepository = cprRepository,
+        _authRepository = authRepository,
         super(CprInitial());
 
   Future<void> onScreenOpened() async => emit(CprInformation(
@@ -35,12 +39,13 @@ class CprScreenCubit extends Cubit<CprScreenState> {
   Future<void> _startReceivingDataAfterCountdown() async {
     await Future.delayed(const Duration(seconds: 3));
     emit(CprSessionProgress(
-      timeLeft: 0,
+      timeLeft: 60,
       currentResults: SessionResult(
         sessionDate: DateTime.now(),
         numberOfChestCompressions: 0,
         averageCompressionsRate: 0.0,
         temporaryCompressionRate: const [],
+        rawData: const [],
       ),
     ));
     _setCprSessionTimerWithPeriodicUpdates();
@@ -70,6 +75,10 @@ class CprScreenCubit extends Cubit<CprScreenState> {
     _sensorsRepository.onCprSessionEnd();
   }
 
-  void onCprSessionSubmitted() =>
+  void onCprSessionSubmittedOrDiscarded() =>
       emit(const CprInformation(shouldShowCprInstruction: false));
+
+  void sessionSubmitRequest(SessionResult sessionResult) =>
+      _cprRepository.addSessionToFirestore(
+          sessionResult, _authRepository.getCurrentUserUid());
 }

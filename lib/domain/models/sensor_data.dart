@@ -14,10 +14,11 @@ class SensorData extends Equatable {
     required this.zAxis,
   });
 
+  /// Look into [SensorDataDTO] for more explanation about those comments
   factory SensorData.fromDTO(SensorDataDTO dto) => SensorData(
         timestamp: dto.timestamp,
-        xAxis: dto.xAxis,
-        yAxis: dto.yAxis,
+        xAxis: 0.0, // dto.xAxis,
+        yAxis: 0.0, // dto.yAxis,
         zAxis: dto.zAxis,
       );
 

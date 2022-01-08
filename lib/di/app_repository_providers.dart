@@ -23,7 +23,8 @@ class AppRepositoryProviders {
         ),
         RepositoryProvider<CprRepository>(
           create: (context) => CprRepository(
-              persistentStorage: ServiceLocator.get<PersistentStorage>()),
+            persistentStorage: ServiceLocator.get<PersistentStorage>(),
+          ),
         ),
         RepositoryProvider<SensorsRepository>(
           create: (context) => SensorsRepository(
