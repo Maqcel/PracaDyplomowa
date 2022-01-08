@@ -15,7 +15,10 @@ class CprLayoutProvider {
     } else if (state is CprSessionWaiting) {
       return const CprSessionCountdown();
     } else {
-      return CprSession(onSubmitSessionClicked: onSubmitSessionClicked);
+      return CprSession(
+        onSubmitSessionClicked: onSubmitSessionClicked,
+        state: state,
+      );
     }
   }
 }

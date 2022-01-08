@@ -44,8 +44,7 @@ class SensorsRepository {
     ServiceLocator.get<GyroscopeSensorService>().disposeGyroscopeSensorStream();
     log.log('Session: Ended\nSensors:Disabled');
 
-    final List<SensorData> _filteredEvents = _filterRawData();
-    logFiltered(_filteredEvents);
+    _events.clear();
   }
 
   List<SensorData> _filterRawData() {
@@ -91,8 +90,9 @@ class SensorsRepository {
           ? _gyroscopeSensor.pauseGyroscopeSensorStream()
           : _gyroscopeSensor.resumeGyroscopeSensorStream();
 
-  SessionResult calculateSessionResult(List<SensorData> filteredData) {
-    final List<List<SensorData>> refractions = _getRefractions(filteredData);
+  SessionResult calculateSessionResult({List<SensorData>? filteredData}) {
+    final List<List<SensorData>> refractions =
+        _getRefractions(filteredData ?? _filterRawData());
     final List<SensorData> refractionPicks = _getRefractionPicks(refractions);
 
     final double averageCompressionsRate =
@@ -139,9 +139,12 @@ class SensorsRepository {
           .toList();
 
   double _calculateAverageCompressionsRate(List<SensorData> refractionPicks) =>
-      refractionPicks.length /
-      (refractionPicks.last.timestamp - refractionPicks.first.timestamp) *
-      microsecondsToMinutes;
+      refractionPicks.isEmpty
+          ? 1
+          : refractionPicks.length /
+              (refractionPicks.last.timestamp -
+                  refractionPicks.first.timestamp) *
+              microsecondsToMinutes;
 
   List<double> _calculateTemporaryCompressionRate(
       List<SensorData> refractionPicks) {

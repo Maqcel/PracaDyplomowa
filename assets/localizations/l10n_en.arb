@@ -142,5 +142,43 @@
     "cprSessionInformationStepFourText": "Our calculations depend heavily on the placement of the device for the best results ensure only vertical movement",
     "@cprSessionInformationStepFourText": {
       "description": "Step four on cpr information screen"
+    },
+    "cprSessionSessionResultsLabelText": "Session Results",
+    "@cprSessionSessionResultsLabelText": {
+      "description": "Label for session results inside cpr sessions screens"
+    },
+    "cprSessionSessionResultsCompressionsCountText": "Compressions count: {compressions}",
+    "@cprSessionSessionResultsCompressionsCountText": {
+      "description": "Compressions count for session results inside cpr sessions screens",
+      "placeholders": {
+        "compressions": {
+          "type": "int",
+          "example": "60"
+        }
+      }
+    },
+    "cprSessionSessionResultsAverageCompressionRateText": "Average compression rate (per minute): {compressions}",
+    "@cprSessionSessionResultsAverageCompressionRateText": {
+      "description": "Average compression rate for session results inside cpr sessions screens",
+      "placeholders": {
+        "compressions": {
+          "type": "String",
+          "example": "154.1"
+        }
+      }
+    },
+    "cprSessionSessionResultsTemporaryAverageCompressionRateText": "Average compression rate from last 10 compressions: {compressions}",
+    "@cprSessionSessionResultsTemporaryAverageCompressionRateText": {
+      "description": "Average temporary compression rate calculated for 10 last compressions for session results inside cpr sessions screens",
+      "placeholders": {
+        "compressions": {
+          "type": "String",
+          "example": "174.1"
+        }
+      }
+    },
+    "cprSessionSessionResultsTemporaryNoCompressionsText": "Waiting for compressions!",
+    "@cprSessionSessionResultsTemporaryNoCompressionsText": {
+      "description": "Temporary compression rate calculated for 10 last compressions for session results are yet not available inside cpr sessions screens"
     }
 }
