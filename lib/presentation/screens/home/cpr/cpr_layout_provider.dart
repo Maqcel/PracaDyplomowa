@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:praca_inz/domain/models/session_result.dart';
 import 'package:praca_inz/presentation/screens/home/cpr/cubit/cpr_screen_cubit.dart';
 import 'package:praca_inz/presentation/screens/home/cpr/widgets/cpr_info.dart';
 import 'package:praca_inz/presentation/screens/home/cpr/widgets/cpr_session.dart';
@@ -8,7 +9,7 @@ class CprLayoutProvider {
   static Widget renderCurrentLayout(
     CprScreenState state,
     Function() onStartSessionClicked,
-    Function() onSubmitSessionClicked,
+    Function(SessionResult) onSubmitSessionClicked,
   ) {
     if (state is CprInformation) {
       return CprInfo(onCprSessionStart: onStartSessionClicked);

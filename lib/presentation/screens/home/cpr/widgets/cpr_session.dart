@@ -11,12 +11,12 @@ import 'package:praca_inz/presentation/widget/button/primary_button.dart';
 
 class CprSession extends StatelessWidget {
   final CprScreenState _state;
-  final Function() _onSubmitSessionClicked;
+  final Function(SessionResult) _onSubmitSessionClicked;
 
   const CprSession({
     Key? key,
     required CprScreenState state,
-    required Function() onSubmitSessionClicked,
+    required Function(SessionResult) onSubmitSessionClicked,
   })  : _state = state,
         _onSubmitSessionClicked = onSubmitSessionClicked,
         super(key: key);
@@ -54,7 +54,11 @@ class CprSession extends StatelessWidget {
                     ? (_state as CprSessionProgress).currentResults
                     : (_state as CprSessionSubmit).sessionResult,
               ),
-              if (_state is CprSessionSubmit) _submitButton(context),
+              if (_state is CprSessionSubmit)
+                _submitButton(
+                  context,
+                  (_state as CprSessionSubmit).sessionResult,
+                ),
             ],
           ),
         ),
@@ -121,14 +125,18 @@ class CprSession extends StatelessWidget {
               ))
           .toList();
 
-  Widget _submitButton(BuildContext context) => Padding(
+  Widget _submitButton(
+    BuildContext context,
+    SessionResult sessionResult,
+  ) =>
+      Padding(
         padding: const EdgeInsets.symmetric(vertical: PaddingDimension.medium),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             PrimaryButton(
               text: context.localizations.cprSessionSubmitButtonText,
-              onPressed: () => _onSubmitSessionClicked(),
+              onPressed: () => _onSubmitSessionClicked(sessionResult),
               direction: ButtonDirection.right,
             )
           ],

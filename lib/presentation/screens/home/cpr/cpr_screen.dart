@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:praca_inz/config/dimensions/animation_dimension.dart';
+import 'package:praca_inz/domain/models/session_result.dart';
 import 'package:praca_inz/extensions/build_context_extension.dart';
+import 'package:praca_inz/presentation/dialogs/confirmation_dialog.dart';
 import 'package:praca_inz/presentation/dialogs/cpr_instruction_dialog.dart';
 import 'package:praca_inz/presentation/screens/home/cpr/cpr_screen_builder.dart';
 import 'package:praca_inz/presentation/screens/home/cpr/cubit/cpr_screen_cubit.dart';
@@ -32,12 +34,12 @@ class _CprScreenState extends State<CprScreen> {
         ),
       );
 
-  void _onHomeNavigationStateChanged(HomeNavigationState state) =>
-      state is HomeCprSession
-          ? state.cprSessionInProgress
-              ? context.read<CprScreenCubit>().onCprSessionStart()
-              : context.read<CprScreenCubit>().onCprSessionSubmitted()
-          : null;
+  void _onHomeNavigationStateChanged(HomeNavigationState state) => state
+          is HomeCprSession
+      ? state.cprSessionInProgress
+          ? context.read<CprScreenCubit>().onCprSessionStart()
+          : context.read<CprScreenCubit>().onCprSessionSubmittedOrDiscarded()
+      : null;
 
   bool _buildWhen(CprScreenState previous, CprScreenState current) =>
       (current is CprInitial ||
@@ -71,7 +73,25 @@ class _CprScreenState extends State<CprScreen> {
   void _onStartSessionClicked() =>
       context.read<HomeNavigationCubit>().onCprSessionStart();
 
-  void _onSubmitSessionClicked() {
+  void _onSubmitSessionClicked(SessionResult sessionResult) =>
+      _showConfirmSubmitDialog(sessionResult);
+
+  Future<void> _showConfirmSubmitDialog(SessionResult sessionResult) async {
+    bool? submitConfirmed = await showDialog<bool>(
+        context: context,
+        builder: (context) => ConfirmationDialog(
+              titleText: context.localizations.cprSessionSessionSubmitTitle,
+              bodyText: context.localizations.cprSessionSessionSubmitText,
+              dismissText: context
+                  .localizations.cprSessionSessionSubmitDismissButtonText,
+              confirmText: context
+                  .localizations.cprSessionSessionSubmitConfirmButtonText,
+            ));
+
+    if (submitConfirmed == true) {
+      context.read<CprScreenCubit>().sessionSubmitRequest(sessionResult);
+    }
+    context.read<CprScreenCubit>().onCprSessionSubmittedOrDiscarded();
     context.read<HomeNavigationCubit>().onCprSessionStop();
   }
 

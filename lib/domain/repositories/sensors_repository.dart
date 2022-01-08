@@ -22,6 +22,7 @@ class SensorsRepository {
         _gyroscopeSensor = gyroscopeSensor;
 
   void onCprSessionStart() {
+    _events.clear();
     ServiceLocator.get<AccelerometerSensorService>()
         .initAccelerometerSensorStream();
     ServiceLocator.get<GyroscopeSensorService>().initGyroscopeSensorStream();
@@ -43,8 +44,6 @@ class SensorsRepository {
         .disposeAccelerometerSensorStream();
     ServiceLocator.get<GyroscopeSensorService>().disposeGyroscopeSensorStream();
     log.log('Session: Ended\nSensors:Disabled');
-
-    _events.clear();
   }
 
   List<SensorData> _filterRawData() {
@@ -91,8 +90,8 @@ class SensorsRepository {
           : _gyroscopeSensor.resumeGyroscopeSensorStream();
 
   SessionResult calculateSessionResult({List<SensorData>? filteredData}) {
-    final List<List<SensorData>> refractions =
-        _getRefractions(filteredData ?? _filterRawData());
+    final List<SensorData> _filteredData = filteredData ?? _filterRawData();
+    final List<List<SensorData>> refractions = _getRefractions(_filteredData);
     final List<SensorData> refractionPicks = _getRefractionPicks(refractions);
 
     final double averageCompressionsRate =
@@ -105,6 +104,7 @@ class SensorsRepository {
       numberOfChestCompressions: refractions.length,
       averageCompressionsRate: averageCompressionsRate,
       temporaryCompressionRate: temporaryCompressionsRate,
+      rawData: _events,
     );
   }
 
