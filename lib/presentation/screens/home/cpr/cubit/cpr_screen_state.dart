@@ -20,11 +20,39 @@ class CprInformation extends CprScreenState {
 
 class CprSessionWaiting extends CprScreenState {}
 
-class CprSessionProgress extends CprScreenState {}
+class CprSessionProgress extends CprScreenState {
+  final int timeLeft;
+  final SessionResult currentResults;
 
-class CprSessionSuccess extends CprScreenState {}
+  const CprSessionProgress({
+    required this.timeLeft,
+    required this.currentResults,
+  });
 
-class CprSessionSubmit extends CprScreenState {}
+  CprSessionProgress copyWith({
+    int? timeLeft,
+    SessionResult? currentResults,
+  }) =>
+      CprSessionProgress(
+        timeLeft: timeLeft ?? this.timeLeft,
+        currentResults: currentResults ?? this.currentResults,
+      );
+
+  @override
+  List<Object> get props => [
+        timeLeft,
+        currentResults,
+      ];
+}
+
+class CprSessionSubmit extends CprScreenState {
+  final SessionResult sessionResult;
+
+  const CprSessionSubmit({required this.sessionResult});
+
+  @override
+  List<Object> get props => [sessionResult];
+}
 
 class CprSubmitError extends CprScreenState {
   final Failure failure;

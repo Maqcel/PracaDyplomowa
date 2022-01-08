@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:praca_inz/domain/common/failure.dart';
+import 'package:praca_inz/domain/models/session_result.dart';
 import 'package:praca_inz/domain/repositories/cpr_repository.dart';
 import 'package:praca_inz/domain/repositories/sensors_repository.dart';
 
@@ -33,13 +34,42 @@ class CprScreenCubit extends Cubit<CprScreenState> {
 
   Future<void> _startReceivingDataAfterCountdown() async {
     await Future.delayed(const Duration(seconds: 3));
-    emit(CprSessionProgress());
+    emit(CprSessionProgress(
+      timeLeft: 0,
+      currentResults: SessionResult(
+        sessionDate: DateTime.now(),
+        numberOfChestCompressions: 0,
+        averageCompressionsRate: 0.0,
+        temporaryCompressionRate: const [],
+      ),
+    ));
+    _setCprSessionTimerWithPeriodicUpdates();
     _sensorsRepository.onCprSessionStart();
   }
 
-  void onCprSessionEnd() {
-    emit(const CprInformation(shouldShowCprInstruction: false));
+  Future<void> _setCprSessionTimerWithPeriodicUpdates() async {
+    Timer _updateTimer = Timer.periodic(
+      const Duration(seconds: 1),
+      (timer) => emit(
+        (state as CprSessionProgress).copyWith(
+          timeLeft: 60 - timer.tick,
+          currentResults: _sensorsRepository.calculateSessionResult(),
+        ),
+      ),
+    );
+    await Future.delayed(const Duration(seconds: 60));
+    _updateTimer.cancel();
+    _onCprSessionEnd();
+  }
+
+  void _onCprSessionEnd() {
+    emit(CprSessionSubmit(
+      sessionResult: _sensorsRepository.calculateSessionResult(),
+    ));
     _sensorsRepository.changeAccelerometerStreamState();
     _sensorsRepository.onCprSessionEnd();
   }
+
+  void onCprSessionSubmitted() =>
+      emit(const CprInformation(shouldShowCprInstruction: false));
 }
