@@ -9,15 +9,18 @@ class UserProfileCard extends StatelessWidget {
   final String _firstName;
   final String _lastName;
   final String _groupId;
+  final Function() _onLogoutButtonClicked;
 
   const UserProfileCard({
     Key? key,
     required String firstName,
     required String lastName,
     required String groupId,
+    required Function() onLogoutButtonClicked,
   })  : _firstName = firstName,
         _lastName = lastName,
         _groupId = groupId,
+        _onLogoutButtonClicked = onLogoutButtonClicked,
         super(key: key);
 
   @override
@@ -49,12 +52,21 @@ class UserProfileCard extends StatelessWidget {
 
   Widget _content(BuildContext context) => Padding(
         padding: const EdgeInsets.all(PaddingDimension.medium),
-        child: Column(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _userIconExpandedRow(context),
-            const SizedBox(height: PaddingDimension.medium),
-            _userNameRow(context),
-            _userGroupRow(context),
+            Column(
+              children: [
+                _userIconExpandedRow(context),
+                const SizedBox(height: PaddingDimension.medium),
+                _userNameRow(context),
+                _userGroupRow(context),
+              ],
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [_logoutButton(context, _onLogoutButtonClicked)],
+            )
           ],
         ),
       );
@@ -90,4 +102,21 @@ class UserProfileCard extends StatelessWidget {
         style: context.theme.textTheme.bodyText1
             ?.copyWith(color: ColorPalette.colorBasic0),
       ));
+
+  static Widget _logoutButton(
+    BuildContext context,
+    Function() onLogoutButtonClicked,
+  ) =>
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: ColorPalette.colorSecondary1000,
+            ),
+            onPressed: () => onLogoutButtonClicked(),
+            child: Text(context.localizations.profileLogoutButtonText),
+          ),
+        ],
+      );
 }
