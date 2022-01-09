@@ -196,5 +196,55 @@
     "cprSessionSessionSubmitConfirmButtonText": "Submit",
     "@cprSessionSessionSubmitConfirmButtonText": {
       "description": "Text displayed on confirm button on Confirmation dialog when sumbiting session"
+    },
+    "profileTotalAmountOfSessionsCount": "Total amount of completed sessions: {count}",
+    "@profileTotalAmountOfSessionsCount": {
+      "description": "Label displayed at user profile with total amount of completed sessions",
+      "placeholders": {
+        "count": {
+          "type": "int",
+          "example": "60"
+        }
+      }
+    },
+    "profileSessionCardNumberOfCompressions": "Compressions done: {count}",
+    "@profileSessionCardNumberOfCompressions": {
+      "description": "Text displayed inside session card with number of compressions done",
+      "placeholders": {
+        "count": {
+          "type": "int",
+          "example": "60"
+        }
+      }
+    },
+    "profileSessionCardaverageCompressionsRate": "Average compressions rate: {count}",
+    "@profileSessionCardaverageCompressionsRate": {
+      "description": "Text displayed inside session card with average compressions rate",
+      "placeholders": {
+        "count": {
+          "type": "String",
+          "example": "160.2"
+        }
+      }
+    },
+    "profileSessionCardDateOfSession": "Session date: {date} at: {hour}",
+    "@profileSessionCardDateOfSession": {
+      "description": "Text displayed inside session card with its date",
+      "placeholders": {
+        "date": {
+          "type": "DateTime",
+          "format": "MMMMd",
+          "example": "July 10"
+        },
+        "hour": {
+          "type": "DateTime",
+          "format": "jm",
+          "example": "7:34 AM"
+        }
+      }
+    },
+    "profileSessionCardSessionGradeLabel": "Session points\n(max 100.0)",
+    "@profileSessionCardSessionGradeLabel": {
+      "description": "Text displayed inside session card as label for session grade"
     }
 }

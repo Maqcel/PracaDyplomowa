@@ -51,10 +51,10 @@ class UserRepository {
     await userReference.set(
       UserProfileDTO(
         uid: userCredential.user!.uid,
-        completedSessions: [],
         firstName: '',
         groupId: '',
         lastName: '',
+        completedSessions: [],
       ).toJson(),
     );
 
@@ -63,7 +63,24 @@ class UserRepository {
 
   Future<UserProfile> getUserProfile(String userUid) async =>
       UserProfile.fromDTO(UserProfileDTO.fromJson(
-        (await _firestore.collection(Paths.usersPath).doc(userUid).get())
-            .data()!,
+        await _getConvertedJson(
+          (await _firestore.collection(Paths.usersPath).doc(userUid).get())
+              .data()!,
+        ),
       ));
+
+  Future<Map<String, dynamic>> _getConvertedJson(
+    Map<String, dynamic> documentData,
+  ) async {
+    List<dynamic> sessionsReferences =
+        documentData['completedSessions']! as List<dynamic>;
+    List<Map<String, dynamic>> sessionsJson = [];
+
+    for (var session in sessionsReferences) {
+      sessionsJson.add((await session.get()).data() as Map<String, dynamic>);
+    }
+
+    documentData['completedSessions'] = sessionsJson;
+    return documentData;
+  }
 }
